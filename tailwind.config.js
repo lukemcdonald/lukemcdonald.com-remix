@@ -67,4 +67,5 @@ module.exports = {
       visibility: ['responsive', 'group-hover'],
     },
   },
+  plugins: [require('@tailwindcss/typography')],
 }
