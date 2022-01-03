@@ -1,0 +1,14 @@
+.vscode/
+.DS_Store
+node_modules/
+
+/.cache
+/server/build
+/public/build
+/src/assets/**/*.css
+
+*.local.*
+
+.env
+.env.production
+.envrc
