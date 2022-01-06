@@ -41,6 +41,7 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.neutral,
+      error: colors.red,
       primary: {
         50: ' #ffffff',
         100: '#fafdf9',
