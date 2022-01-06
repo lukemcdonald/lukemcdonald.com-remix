@@ -18,7 +18,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return work
 }
 
-export default function PostSlug() {
+export default function WorkSlug() {
   const work = useLoaderData<Work>()
 
   return (
