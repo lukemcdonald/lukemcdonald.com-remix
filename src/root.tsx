@@ -10,7 +10,7 @@ import type { MetaFunction, LinksFunction } from 'remix'
 import styles from './assets/css/tailwind.css'
 
 export const meta: MetaFunction = () => {
-  return { title: 'New Remix App' }
+  return { title: 'Luke McDonald' }
 }
 
 export const links: LinksFunction = () => {
