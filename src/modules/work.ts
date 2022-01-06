@@ -4,7 +4,9 @@ import parseFrontMatter from 'front-matter'
 import invariant from 'tiny-invariant'
 import { marked } from 'marked'
 
-export type Work = {
+const worksPath = path.join(__dirname, '..', 'content/work')
+
+export interface Work {
   draft: boolean
   html: string
   image: string
@@ -15,8 +17,6 @@ export type Work = {
 }
 
 export type WorkMarkdownAttributes = Omit<Work, 'html' | 'markdown' | 'slug'>
-
-const worksPath = path.join(__dirname, '..', 'content/work')
 
 function isValidWorkAttributes(
   attributes: any,
@@ -51,7 +51,7 @@ export async function getWorks() {
 
       invariant(
         isValidWorkAttributes(attributes),
-        `${filename} has bad meta data!`,
+        `Work ${filepath} is missing attributes.`,
       )
 
       return {

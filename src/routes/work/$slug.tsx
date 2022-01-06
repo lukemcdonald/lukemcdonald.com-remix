@@ -2,8 +2,12 @@ import { useLoaderData } from 'remix'
 import invariant from 'tiny-invariant'
 import { getWork } from '~/modules/work'
 
-import type { LoaderFunction } from 'remix'
+import type { LoaderFunction, MetaFunction } from 'remix'
 import type { Work } from '~/modules/work'
+
+export const meta: MetaFunction = ({ data }) => {
+  return { title: `${data.title} — Luke McDonald` }
+}
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.slug, 'Expected params.slug')

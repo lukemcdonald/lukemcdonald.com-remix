@@ -19,6 +19,7 @@
     "@remix-run/serve": "^1.1.1",
     "@tailwindcss/typography": "^0.5.0",
     "@types/marked": "^4.0.1",
+    "clsx": "^1.1.1",
     "front-matter": "^4.0.2",
     "marked": "^4.0.8",
     "postcss-import": "^14.0.2",
