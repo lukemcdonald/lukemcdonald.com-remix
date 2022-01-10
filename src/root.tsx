@@ -1,6 +1,4 @@
-import React, { FC } from 'react'
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -8,15 +6,38 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'remix'
+import Layout from '~/components/layout'
+
 import type { MetaFunction, LinksFunction } from 'remix'
-import styles from './assets/css/tailwind.css'
+
+import styles from './styles/tailwind.css'
 
 export const meta: MetaFunction = () => {
   return { title: 'Luke McDonald' }
 }
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }]
+  return [
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/favicons/apple-touch-icon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: '/favicons/favicon.svg',
+    },
+    {
+      rel: 'alternate icon',
+      type: 'image/svg+xml',
+      href: '/favicons/favicon.svg',
+    },
+    {
+      rel: 'stylesheet',
+      href: styles,
+    },
+  ]
 }
 
 export default function App() {
@@ -49,26 +70,6 @@ function Document({ children }: DocumentProps) {
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
-  )
-}
-
-interface LayoutProps {
-  children: JSX.Element
-}
-
-function Layout({ children }: LayoutProps) {
-  return (
-    <div>
-      <header>
-        <nav>
-          <Link to="/work/">Work</Link>
-          <Link to="/play/">Play</Link>
-          <Link to="/i-am-a/">Live</Link>
-        </nav>
-      </header>
-      <main>{children}</main>
-      <footer>{new Date().getFullYear()}</footer>
-    </div>
   )
 }
 

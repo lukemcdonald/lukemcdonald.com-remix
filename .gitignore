@@ -5,7 +5,7 @@ node_modules/
 /.cache
 /build
 /public/build
-/src/assets/**/*.css
+/src/styles/**/*.css
 
 *.local.*
 

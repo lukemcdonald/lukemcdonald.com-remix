@@ -5,6 +5,9 @@
 - https://www.sanity.io/guides/remix-run-live-preview
 - https://github.com/SimeonGriggs/simeonGriggs
 
+[ ] Consider using [Rome](https://rome.tools/#development-status) for a linter,
+compiler, bundler, and formatter.
+
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)
