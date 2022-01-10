@@ -1,7 +1,7 @@
 ---
 title: 'AudioTheme'
 draft: false
-image: '../assets/audiotheme-icon-pattern.png' # public/..[build]/assets/...
+image: '/images/audiotheme-icon-pattern.png' # public/..[build]/images/...
 subtitle: 'Websites for people who make music.'
 ---
 

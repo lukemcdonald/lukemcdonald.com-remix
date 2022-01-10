@@ -1,7 +1,7 @@
 ---
 title: 'Cedaro'
 draft: false
-image: '../assets/cedaro-icon-pattern.png'
+image: '/images/cedaro-icon-pattern.png'
 subtitle: 'A digital product shop.'
 ---
 

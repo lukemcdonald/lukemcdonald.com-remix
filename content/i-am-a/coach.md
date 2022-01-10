@@ -2,7 +2,7 @@
 tagline: 'I am a'
 title: 'Coach'
 draft: false
-image: '../assets/luke-coach.jpg'
+image: '/images/luke-coach.jpg'
 subtitle:
   '"Success is peace of mind attained only through self-satisfaction in knowing
   you made the effort to do the best of which you are capable." <span

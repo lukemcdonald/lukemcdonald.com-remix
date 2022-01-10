@@ -2,7 +2,7 @@
 tagline: 'I am a'
 title: 'Husband'
 draft: false
-image: '../assets/luke-heather.jpg'
+image: '/images/luke-heather.jpg'
 subtitle: '"You being you, lets me be me, and us be us."'
 ---
 

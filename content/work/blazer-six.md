@@ -1,7 +1,7 @@
 ---
 title: 'Blazer Six'
 draft: false
-image: '../assets/blazer-six-icon-pattern.png'
+image: '/images/blazer-six-icon-pattern.png'
 subtitle: 'A friendly webshop 🙂'
 ---
 
