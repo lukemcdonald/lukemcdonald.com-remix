@@ -4,6 +4,7 @@
  */
 
 @import 'tailwindcss/base';
+@import 'base/layout';
 
 /**
  * Components
@@ -11,7 +12,10 @@
  */
 
 @import 'tailwindcss/components';
+@import 'components/bio-tagline';
 @import 'components/button';
+@import 'components/entry';
+@import 'components/header';
 
 /**
   * Utilities
