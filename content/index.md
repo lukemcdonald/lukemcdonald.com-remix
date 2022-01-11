@@ -1,14 +1,13 @@
 ---
 draft: false
-slug: "home"
-title: "Greetings."
-subtitle: "<div class='bio-tagline'>
-  <a href='/i-am-a/christian'>Christian</a>
-  <a href='/i-am-a/husband'>Husband</a>
-  <a href='/i-am-a/father'>Father</a>
-  <a href='/i-am-a/coach'>Coach</a>
-</div>"
-image: "../images/luke-mcdonald-stache.jpg"
+title: 'Greetings.'
+subtitle: `<div class="bio-tagline">
+  <a href="/i-am-a/christian">Christian</a>
+  <a href="/i-am-a/husband">Husband</a>
+  <a href="/i-am-a/father">Father</a>
+  <a href="/i-am-a/coach">Coach</a>
+</div>`
+image: '/images/luke-mustachio.jpg'
 ---
 
 My
