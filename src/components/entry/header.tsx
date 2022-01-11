@@ -2,6 +2,8 @@ import React from 'react'
 import clsx from 'clsx'
 
 import type { EntryProps } from '~/components/entry'
+import { SVG } from '../svg'
+import { Mountains } from '../mountains'
 
 // import Mountains from 'images/svgs/mountains.svg'
 
@@ -39,7 +41,7 @@ export default function EntryHeader({
         {date && <div className="text-lg leading-normal">{date}</div>}
       </div>
 
-      {/* <Mountains className="absolute bottom-0 left-0 z-0" /> */}
+      <Mountains className="absolute bottom-0 left-0 z-0" />
     </header>
   )
 }
