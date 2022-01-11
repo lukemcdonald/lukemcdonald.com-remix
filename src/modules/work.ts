@@ -11,12 +11,11 @@ export interface Work {
   html: string
   image: string
   markdown: string
-  slug: string
   subtitle: string
   title: string
 }
 
-export type WorkMarkdownAttributes = Omit<Work, 'html' | 'markdown' | 'slug'>
+export type WorkMarkdownAttributes = Omit<Work, 'html' | 'markdown'>
 
 function isValidWorkAttributes(
   attributes: any,

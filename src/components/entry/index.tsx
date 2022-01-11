@@ -6,11 +6,11 @@ import EntryNav from '~/components/entry/nav'
 import EntryBody from '~/components/entry/body'
 
 export interface EntryProps {
-  date: string
-  html: string
-  image: string
-  subtitle: string
-  tagline: string
+  date?: string
+  html?: string
+  image?: string
+  subtitle?: string
+  tagline?: string
   title: string
 }
 

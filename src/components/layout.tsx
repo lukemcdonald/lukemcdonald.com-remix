@@ -3,11 +3,11 @@ import clsx from 'clsx'
 import Header from '~/components/header'
 import Main from '~/components/main'
 
-export default function Layout({ children }: { children: JSX.Element }) {
+export default function Layout({ children }: React.PropsWithChildren<{}>) {
   return (
     <div className="lg:grid">
       <img
-        src="../images/landscape-3.jpg"
+        src="/images/landscape-tree-fog.jpg"
         alt="Background"
         className="hidden lg:block lg:max-h-screen lg:opacity-20 lg:overflow-hidden"
         style={{
@@ -34,13 +34,3 @@ export default function Layout({ children }: { children: JSX.Element }) {
     </div>
   )
 }
-
-// export const query = graphql`
-//   {
-//     bgImage: file(relativePath: { eq: "billy-graham-preaching-header.jpg" }) {
-//       childImageSharp {
-//         gatsbyImageData(placeholder: TRACED_SVG, transformOptions: { grayscale: true }, layout: FULL_WIDTH)
-//       }
-//     }
-//   }
-// `

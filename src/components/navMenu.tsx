@@ -16,7 +16,7 @@ export type MenuLinks = MenuLink[]
 
 interface NavMenuProps {
   as?: React.ElementType
-  children?: JSX.Element
+  children?: React.ReactNode
   className?: string
   link: MenuLink
 }
