@@ -1,34 +1,18 @@
-export function getSocialMetas({
-  url,
-  title = 'Luke McDonald',
-  description = 'Full-stack developer with an eye for design.',
-  image = '',
-  keywords = '',
-}: {
-  origin: string
-  image?: string
-  url: string
-  title?: string
-  description?: string
-  keywords?: string
-}) {
-  return {
-    title: title ? `${title} — Luke McDonald` : 'Luke McDonald',
-    description,
-    keywords,
-    image,
-    'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
-    'og:url': url,
-    'og:title': title,
-    'og:description': description,
-    'og:image': image,
-    'og:site_name': 'Luke McDonald',
-    'twitter:card': image ? 'summary_large_image' : 'summary',
-    'twitter:creator': '@_lukemcdonald_',
-    'twitter:site': '@_lukemcdonald_',
-    'twitter:title': title,
-    'twitter:description': description,
-    'twitter:image': image,
-    'twitter:alt': title,
-  }
-}
+import { initSeo } from 'remix-seo'
+
+export const { getSeo, getSeoMeta, getSeoLinks } = initSeo({
+  // Set defaults that will apply to routes w/o specific SEO tags
+  title: 'Luke McDonald',
+  titleTemplate: '%s | Luke McDonald',
+  openGraph: {
+    siteName: 'Luke McDonald',
+    type: 'website',
+    locale: 'en_US',
+    images: [{ url: '/images/seo-banner.png', alt: 'Luke McDonald' }],
+  },
+  twitter: {
+    creator: '_lukemcdonald_',
+    site: '_lukemcdonald_',
+    // card: image ? 'summary_large_image' : 'summary',
+  },
+})

@@ -1,16 +1,28 @@
-import { useLoaderData } from 'remix'
+import { json, useLoaderData } from 'remix'
 import invariant from 'tiny-invariant'
+
+import { getSeoMeta } from '~/utils/seo'
 import { getWork } from '~/modules/work'
 
 import type { LoaderFunction, MetaFunction } from 'remix'
 import type { Work } from '~/modules/work'
 
-export const meta: MetaFunction = ({ data }) => {
-  return { title: `${data.title} — Luke McDonald` }
+interface RouteData {
+  work: Work
 }
 
-export const loader: LoaderFunction = async ({ params }) => {
+const meta: MetaFunction = ({ data }: { data: RouteData }) => {
+  const { work } = data
+
+  return getSeoMeta({
+    title: `${work.title}`,
+    description: `${work?.subtitle ? work.subtitle : ''}`,
+  })
+}
+
+const loader: LoaderFunction = async ({ params }) => {
   invariant(params.slug, 'Expected params.slug')
+
   const work = await getWork(params.slug)
 
   if (!work || work.draft) {
@@ -19,11 +31,13 @@ export const loader: LoaderFunction = async ({ params }) => {
     })
   }
 
-  return work
+  const data: RouteData = { work }
+
+  return json(data)
 }
 
-export default function WorkSlug() {
-  const work = useLoaderData<Work>()
+function WorkSlug() {
+  const { work } = useLoaderData<RouteData>()
 
   return (
     <article>
@@ -33,3 +47,6 @@ export default function WorkSlug() {
     </article>
   )
 }
+
+export default WorkSlug
+export { meta, loader }

@@ -5,42 +5,45 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
 } from 'remix'
-import Layout from '~/components/layout'
+import type { MetaFunction, LinksFunction, ErrorBoundaryComponent } from 'remix'
 
-import type { MetaFunction, LinksFunction } from 'remix'
+import { getSeoLinks, getSeoMeta } from '~/utils/seo'
+import Layout from '~/components/layout'
 
 import styles from './styles/tailwind.css'
 
-export const meta: MetaFunction = () => {
-  return { title: 'Luke McDonald' }
-}
+const meta: MetaFunction = () => ({
+  ...getSeoMeta(),
+  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+  robots: 'index,follow',
+  googlebot: 'index,follow',
+  'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
+  'theme-color': '#7dc149',
+})
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: '/favicons/apple-touch-icon.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/svg+xml',
-      href: '/favicons/favicon.svg',
-    },
-    {
-      rel: 'alternate icon',
-      type: 'image/svg+xml',
-      href: '/favicons/favicon.svg',
-    },
-    {
-      rel: 'stylesheet',
-      href: styles,
-    },
-  ]
-}
+const links: LinksFunction = () => [
+  ...getSeoLinks(),
+  { rel: 'stylesheet', href: styles },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/favicons/apple-touch-icon.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/svg+xml',
+    href: '/favicons/favicon.svg',
+  },
+  {
+    rel: 'alternate icon',
+    type: 'image/svg+xml',
+    href: '/favicons/favicon.svg',
+  },
+]
 
-export default function App() {
+function App() {
   return (
     <Document>
       <Layout>
@@ -50,17 +53,19 @@ export default function App() {
   )
 }
 
-interface DocumentProps {
-  children: JSX.Element
-}
-
-function Document({ children }: DocumentProps) {
+function Document({
+  children,
+  title,
+}: {
+  children: React.ReactNode
+  title?: string
+}) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
+        {title ? <title>{title}</title> : null}
         <Links />
       </head>
       <body>
@@ -73,21 +78,68 @@ function Document({ children }: DocumentProps) {
   )
 }
 
-interface ErrorBoundaryProps {
-  error: {
-    message: string
-  }
-}
+const CatchBoundary: React.VFC = () => {
+  let caught = useCatch()
+  let message
 
-export function ErrorBoundary({ error }: ErrorBoundaryProps) {
+  switch (caught.status) {
+    case 401:
+      message = (
+        <p>
+          Oops! Looks like you tried to visit a page that you do not have access
+          to.
+        </p>
+      )
+      break
+    case 404:
+      message = (
+        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
+      )
+      break
+    default:
+      throw new Error(caught.data || caught.statusText)
+  }
+
   return (
-    <Document>
+    <Document title={`${caught.status} ${caught.statusText}`}>
       <Layout>
-        <div className="max-w-2xl p-4 prose-sm prose bg-error-50 text-error-800">
-          <h3 className="font-medium">Error:</h3>
-          <p className="">{error.message}</p>
+        <div className="min-h-screen w-[90%] max-w-5xl mx-auto pt-20 space-y-4 font-mono text-center text-white bg-error-800">
+          <h1 className="inline-block text-3xl font-bold bg-white text-error-800">
+            {caught.status} {caught.statusText}
+          </h1>
+          {message}
         </div>
       </Layout>
     </Document>
   )
 }
+
+const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
+  console.error('Check your server terminal output')
+
+  return (
+    <Document title="Error!">
+      <Layout>
+        <div className="min-h-screen w-[90%] max-w-5xl mx-auto pt-20 space-y-4 font-mono text-center text-white bg-error-800">
+          <h1 className="inline-block text-3xl font-bold bg-white text-error-800">
+            Uncaught Exception!
+          </h1>
+          <p>
+            If you are not the developer, please click back in your browser and
+            try again.
+          </p>
+          <pre className="px-4 py-2 overflow-auto border-4 border-white">
+            {error.message}
+          </pre>
+          <p>
+            There was an uncaught exception in your application. Check the
+            browser console and/or the server console to inspect the error.
+          </p>
+        </div>
+      </Layout>
+    </Document>
+  )
+}
+
+export default App
+export { CatchBoundary, ErrorBoundary, links, meta }
