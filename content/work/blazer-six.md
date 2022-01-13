@@ -2,7 +2,7 @@
 title: 'Blazer Six'
 draft: false
 image: '/images/icon-pattern-blazer-six.png'
-subtitle: 'A friendly webshop 🙂'
+excerpt: 'A friendly webshop 🙂'
 ---
 
 [Blazer Six](https://www.blazersix.com/) builds web solutions for the desktop,

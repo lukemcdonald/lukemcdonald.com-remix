@@ -3,7 +3,7 @@ tagline: 'I am a'
 title: 'Husband'
 draft: false
 image: '/images/luke-heather.jpg'
-subtitle: '"You being you, lets me be me, and us be us."'
+excerpt: '"You being you, lets me be me, and us be us."'
 ---
 
 A month after moving from Montana to Iowa, I was ready to head back to the

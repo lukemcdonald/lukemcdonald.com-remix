@@ -17,7 +17,7 @@ const meta: MetaFunction = ({ data }: { data: RouteData }) => {
 
   return getSeoMeta({
     title: `${work.title}`,
-    description: `${work?.subtitle ? work.subtitle : ''}`,
+    description: `${work?.excerpt ? work.excerpt : ''}`,
   })
 }
 
@@ -43,7 +43,7 @@ function WorkSlug() {
   return (
     <Entry
       title={work.title}
-      subtitle={work.subtitle}
+      excerpt={work.excerpt}
       html={work.html}
       image={work.image}
     />

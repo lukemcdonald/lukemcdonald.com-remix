@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const post = {
     title: 'Greetings.',
-    subtitle: `<div class='bio-tagline'>
+    excerpt: `<div class='bio-tagline'>
     <a href='/i-am-a/christian'>Christian</a>
     <a href='/i-am-a/husband'>Husband</a>
     <a href='/i-am-a/father'>Father</a>
@@ -26,7 +26,7 @@ export default function Index() {
   return (
     <Entry
       title={post.title}
-      subtitle={post.subtitle}
+      excerpt={post.excerpt}
       html={post.html}
       image={post.image}
     />

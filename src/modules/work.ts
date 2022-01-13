@@ -11,7 +11,7 @@ export interface Work {
   html: string
   image: string
   markdown: string
-  subtitle: string
+  excerpt: string
   title: string
 }
 
@@ -20,7 +20,7 @@ export type WorkMarkdownAttributes = Omit<Work, 'html' | 'markdown'>
 function isValidWorkAttributes(
   attributes: any,
 ): attributes is WorkMarkdownAttributes {
-  const required = ['draft', 'image', 'subtitle', 'title']
+  const required = ['draft', 'image', 'excerpt', 'title']
   return required.every(key => Object.keys(attributes).includes(key))
 }
 

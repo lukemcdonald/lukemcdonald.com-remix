@@ -2,7 +2,7 @@
 title: 'AudioTheme'
 draft: false
 image: '/images/icon-pattern-audiotheme.png' # public/..[build]/images/...
-subtitle: 'Websites for people who make music.'
+excerpt: 'Websites for people who make music.'
 ---
 
 **AudioTheme** specializes in

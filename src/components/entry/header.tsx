@@ -8,7 +8,7 @@ import { Mountains } from '../mountains'
 // import Mountains from 'images/svgs/mountains.svg'
 
 export default function EntryHeader({
-  subtitle,
+  excerpt,
   tagline,
   title,
 }: Omit<EntryProps, 'html' | 'image'>) {
@@ -31,10 +31,10 @@ export default function EntryHeader({
 
         <h1 className="mb-6 text-5xl font-semibold">{title}</h1>
 
-        {subtitle && (
+        {excerpt && (
           <div
             className="text-lg leading-normal"
-            dangerouslySetInnerHTML={{ __html: subtitle }}
+            dangerouslySetInnerHTML={{ __html: excerpt }}
           />
         )}
       </div>

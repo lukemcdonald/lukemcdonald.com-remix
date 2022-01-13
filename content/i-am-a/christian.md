@@ -3,7 +3,7 @@ tagline: 'I am a'
 title: 'Christian'
 draft: false
 image: '/images/luke-baptism.jpg'
-subtitle:
+excerpt:
   '"For the wages of sin is death, but the free gift of God is eternal life in
   Christ Jesus our Lord." <a class="text-sm font-semibold tracking-wide
   uppercase text-primary-800"

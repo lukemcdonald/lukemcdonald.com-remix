@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Greetings.'
-subtitle: `<div class="bio-tagline">
+excerpt: `<div class="bio-tagline">
   <a href="/i-am-a/christian">Christian</a>
   <a href="/i-am-a/husband">Husband</a>
   <a href="/i-am-a/father">Father</a>

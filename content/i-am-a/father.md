@@ -3,7 +3,7 @@ tagline: 'I am a'
 title: 'Father'
 draft: false
 image: '/images/luke-kids.jpg'
-subtitle:
+excerpt:
   '"Like arrows in the hand of a warrior are the children of one’s youth.
   Blessed is the man who fills his quiver with them!" <a class="text-sm
   font-semibold tracking-wide uppercase text-primary-800"

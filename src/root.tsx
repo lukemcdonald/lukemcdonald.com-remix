@@ -100,7 +100,7 @@ const CatchBoundary: React.VFC = () => {
         <Entry
           title={`${caught.status}.`}
           tagline={caught.statusText}
-          subtitle={message}
+          excerpt={message}
           image="/images/not-found.jpg"
         />
       </Layout>
@@ -116,7 +116,7 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
       <Layout>
         <Entry
           title="Error!"
-          subtitle="There was an uncaught exception in your application. Check the browser
+          excerpt="There was an uncaught exception in your application. Check the browser
           console and/or the server console to inspect the error."
           image="/images/not-found.jpg"
           html={`<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${error.message}</span></pre>`}

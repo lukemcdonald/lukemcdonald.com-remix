@@ -2,7 +2,7 @@
 title: 'Cedaro'
 draft: false
 image: '/images/icon-pattern-cedaro.png'
-subtitle: 'A digital product shop.'
+excerpt: 'A digital product shop.'
 ---
 
 [Cedaro](https://www.cedaro.com/) is a digital product shop fueled by the folks
