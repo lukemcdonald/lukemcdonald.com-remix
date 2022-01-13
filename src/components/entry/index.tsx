@@ -6,7 +6,6 @@ import EntryNav from '~/components/entry/nav'
 import EntryBody from '~/components/entry/body'
 
 export interface EntryProps {
-  date?: string
   html?: string
   image?: string
   subtitle?: string
@@ -15,7 +14,6 @@ export interface EntryProps {
 }
 
 export default function Entry({
-  date,
   html,
   image,
   subtitle,
@@ -23,16 +21,9 @@ export default function Entry({
   title,
 }: EntryProps) {
   return (
-    <article className={clsx('entry', 'w-full overflow-hidden')}>
-      <EntryHeader
-        title={title}
-        tagline={tagline}
-        subtitle={subtitle}
-        date={date}
-      />
-
+    <article className={clsx('entry', 'w-full overflow-hidden bg-primary-800')}>
+      <EntryHeader title={title} tagline={tagline} subtitle={subtitle} />
       <EntryNav />
-
       {(html || image) && <EntryBody html={html} image={image} />}
     </article>
   )

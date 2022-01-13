@@ -8,7 +8,6 @@ import { Mountains } from '../mountains'
 // import Mountains from 'images/svgs/mountains.svg'
 
 export default function EntryHeader({
-  date,
   subtitle,
   tagline,
   title,
@@ -31,14 +30,13 @@ export default function EntryHeader({
         )}
 
         <h1 className="mb-6 text-5xl font-semibold">{title}</h1>
+
         {subtitle && (
           <div
             className="text-lg leading-normal"
             dangerouslySetInnerHTML={{ __html: subtitle }}
           />
         )}
-
-        {date && <div className="text-lg leading-normal">{date}</div>}
       </div>
 
       <Mountains className="absolute bottom-0 left-0 z-0" />
