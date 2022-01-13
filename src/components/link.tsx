@@ -22,8 +22,6 @@ export default function Link({
   // one slash, and that anything else is external.
   const internal = /^\/(?!\/)/.test(to)
 
-  console.log('className', className)
-
   if (internal) {
     return (
       <NavLink

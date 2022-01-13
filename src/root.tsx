@@ -65,8 +65,8 @@ function Document({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <Meta />
         {title ? <title>{title}</title> : null}
+        <Meta />
         <Links />
       </head>
       <body>
@@ -109,27 +109,18 @@ const CatchBoundary: React.VFC = () => {
 }
 
 const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
-  console.error('Check your server terminal output')
+  console.error('Check your server terminal output', error)
 
   return (
     <Document title="Error!">
       <Layout>
-        <div className="min-h-screen w-[90%] max-w-5xl mx-auto pt-20 space-y-4 font-mono text-center text-white bg-error-800">
-          <h1 className="inline-block text-3xl font-bold bg-white text-error-800">
-            Uncaught Exception!
-          </h1>
-          <p>
-            If you are not the developer, please click back in your browser and
-            try again.
-          </p>
-          <pre className="px-4 py-2 overflow-auto border-4 border-white">
-            {error.message}
-          </pre>
-          <p>
-            There was an uncaught exception in your application. Check the
-            browser console and/or the server console to inspect the error.
-          </p>
-        </div>
+        <Entry
+          title="Error!"
+          subtitle="There was an uncaught exception in your application. Check the browser
+          console and/or the server console to inspect the error."
+          image="/images/not-found.jpg"
+          html={`<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${error.message}</span></pre>`}
+        />
       </Layout>
     </Document>
   )

@@ -11,8 +11,8 @@ export const { getSeo, getSeoMeta, getSeoLinks } = initSeo({
     images: [{ url: '/images/seo-banner.png', alt: 'Luke McDonald' }],
   },
   twitter: {
-    creator: '_lukemcdonald_',
-    site: '_lukemcdonald_',
+    creator: 'thelukemcdonald',
+    site: 'thelukemcdonald',
     // card: image ? 'summary_large_image' : 'summary',
   },
 })
