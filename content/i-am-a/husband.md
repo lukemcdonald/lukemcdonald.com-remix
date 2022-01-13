@@ -1,5 +1,5 @@
 ---
-tagline: 'I am a'
+subtitle: 'I am a'
 title: 'Husband'
 draft: false
 image: '/images/luke-heather.jpg'

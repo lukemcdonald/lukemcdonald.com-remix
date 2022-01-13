@@ -9,7 +9,7 @@ export interface EntryProps {
   html?: string
   image?: string
   excerpt?: string
-  tagline?: string
+  subtitle?: string
   title: string
 }
 
@@ -17,12 +17,12 @@ export default function Entry({
   html,
   image,
   excerpt,
-  tagline,
+  subtitle,
   title,
 }: EntryProps) {
   return (
     <article className={clsx('entry', 'w-full overflow-hidden bg-primary-800')}>
-      <EntryHeader title={title} tagline={tagline} excerpt={excerpt} />
+      <EntryHeader title={title} subtitle={subtitle} excerpt={excerpt} />
       <EntryNav />
       {(html || image) && <EntryBody html={html} image={image} />}
     </article>

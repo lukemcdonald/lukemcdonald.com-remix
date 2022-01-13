@@ -1,5 +1,5 @@
 ---
-tagline: 'I am a'
+subtitle: 'I am a'
 title: 'Christian'
 draft: false
 image: '/images/luke-baptism.jpg'

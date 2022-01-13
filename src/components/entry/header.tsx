@@ -9,7 +9,7 @@ import { Mountains } from '../mountains'
 
 export default function EntryHeader({
   excerpt,
-  tagline,
+  subtitle,
   title,
 }: Omit<EntryProps, 'html' | 'image'>) {
   return (
@@ -23,9 +23,9 @@ export default function EntryHeader({
       }}
     >
       <div className="relative z-10">
-        {tagline && (
+        {subtitle && (
           <div className="mb-1 text-sm font-semibold tracking-wider uppercase text-primary-800">
-            {tagline}
+            {subtitle}
           </div>
         )}
 

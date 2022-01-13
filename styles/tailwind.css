@@ -12,7 +12,7 @@
  */
 
 @import 'tailwindcss/components';
-@import 'components/bio-tagline';
+@import 'components/bio-subtitle';
 @import 'components/button';
 @import 'components/entry';
 @import 'components/header';

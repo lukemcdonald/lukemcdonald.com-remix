@@ -99,7 +99,7 @@ const CatchBoundary: React.VFC = () => {
       <Layout>
         <Entry
           title={`${caught.status}.`}
-          tagline={caught.statusText}
+          subtitle={caught.statusText}
           excerpt={message}
           image="/images/not-found.jpg"
         />

@@ -1,5 +1,5 @@
 ---
-tagline: 'I am a'
+subtitle: 'I am a'
 title: 'Coach'
 draft: false
 image: '/images/luke-coach.jpg'
