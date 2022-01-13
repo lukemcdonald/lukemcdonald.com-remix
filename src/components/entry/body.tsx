@@ -27,8 +27,9 @@ export default function EntryBody({
         <div
           className={clsx(
             'entry__content',
-            'bg-primary-900 flex flex-col justify-center px-5 py-10 text-lg text-white relative leading-normal xs:px-10 ',
+            'bg-primary-900 flex flex-col justify-center px-5 py-10 text-lg text-white relative leading-normal xs:px-10',
           )}
+          style={{ wordBreak: 'break-word' }}
           dangerouslySetInnerHTML={{ __html: html }}
         />
       )}

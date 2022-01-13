@@ -102,6 +102,10 @@ const CatchBoundary: React.VFC = () => {
           subtitle={caught.statusText}
           excerpt={message}
           image="/images/not-found.jpg"
+          html={
+            caught?.data &&
+            `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught.data}</span></pre>`
+          }
         />
       </Layout>
     </Document>
@@ -109,7 +113,7 @@ const CatchBoundary: React.VFC = () => {
 }
 
 const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
-  console.error('Check your server terminal output', error)
+  console.error('Check your server terminal output.')
 
   return (
     <Document title="Error!">
