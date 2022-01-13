@@ -1,6 +1,4 @@
-import React from 'react'
 import clsx from 'clsx'
-import { Email } from 'react-obfuscate-email'
 import Link from '~/components/link'
 
 export default function EntryNav({ title }: { title?: string }) {
@@ -23,9 +21,9 @@ export default function EntryNav({ title }: { title?: string }) {
 
         <span className="w-24 mx-4 border-b" />
 
-        <Email className={linkStyles} email="thelukemcdonald@gmail.com">
+        <Link to="mailto:thelukemcdonald@gmail.com" className={linkStyles}>
           Email
-        </Email>
+        </Link>
       </div>
     </div>
   )
