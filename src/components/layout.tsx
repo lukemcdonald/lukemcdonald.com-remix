@@ -9,7 +9,7 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
       <img
         src="/images/landscape-tree-fog.jpg"
         alt="Background"
-        className="hidden lg:block lg:max-h-screen lg:opacity-20 lg:overflow-hidden"
+        className="absolute hidden object-cover w-full h-full max-h-screen overflow-hidden transform -translate-x-1/2 -translate-y-1/2 opacity-20 lg:block left-1/2 top-1/2 grayscale"
         style={{
           gridArea: '1/1',
         }}
