@@ -6,6 +6,7 @@ import { getWork } from '~/modules/work'
 
 import type { LoaderFunction, MetaFunction } from 'remix'
 import type { Work } from '~/modules/work'
+import Entry from '~/components/entry'
 
 interface RouteData {
   work: Work
@@ -40,11 +41,12 @@ function WorkSlug() {
   const { work } = useLoaderData<RouteData>()
 
   return (
-    <article>
-      <h1>{work.title}</h1>
-      <img src={work.image} alt={work.title} />
-      <div dangerouslySetInnerHTML={{ __html: work.html }} />
-    </article>
+    <Entry
+      title={work.title}
+      subtitle={work.subtitle}
+      html={work.html}
+      image={work.image}
+    />
   )
 }
 
