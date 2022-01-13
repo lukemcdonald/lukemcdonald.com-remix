@@ -1,7 +1,9 @@
-import { MetaFunction } from 'remix'
+import { LoaderFunction, MetaFunction, useLoaderData } from 'remix'
 
-import { getSeoMeta } from '~/utils/seo'
 import Entry from '~/components/entry'
+import { getContent } from '~/modules/content'
+import type { Content } from '~/modules/content'
+import { getSeoMeta } from '~/utils/seo'
 
 export const meta: MetaFunction = () => {
   return getSeoMeta({
@@ -10,25 +12,32 @@ export const meta: MetaFunction = () => {
   })
 }
 
-export default function Index() {
-  const post = {
-    title: 'Greetings.',
-    excerpt: `<div class='bio-tagline'>
-    <a href='/i-am-a/christian'>Christian</a>
-    <a href='/i-am-a/husband'>Husband</a>
-    <a href='/i-am-a/father'>Father</a>
-    <a href='/i-am-a/coach'>Coach</a>
-  </div>`,
-    html: 'Content...',
-    image: '/images/luke-mustachio.jpg',
+interface RouteData {
+  page: Content
+}
+
+export const loader: LoaderFunction = async () => {
+  const page = await getContent('index')
+
+  if (!page) {
+    throw new Response('Not Found', {
+      status: 404,
+    })
   }
+
+  const data: RouteData = { page }
+  return data
+}
+
+export default function Index() {
+  const { page } = useLoaderData()
 
   return (
     <Entry
-      title={post.title}
-      excerpt={post.excerpt}
-      html={post.html}
-      image={post.image}
+      title={page.title}
+      excerpt={page.excerpt}
+      html={page.html}
+      image={page.image}
     />
   )
 }
