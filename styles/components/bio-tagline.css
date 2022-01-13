@@ -1,5 +1,5 @@
 @layer components {
-  .bio-subtitle {
+  .bio-tagline {
     @apply inline-flex flex-col;
     text-shadow: none;
     counter-reset: list-number;
