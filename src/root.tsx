@@ -11,6 +11,7 @@ import type { MetaFunction, LinksFunction, ErrorBoundaryComponent } from 'remix'
 
 import { getSeoLinks, getSeoMeta } from '~/utils/seo'
 import Layout from '~/components/layout'
+import Entry from './components/entry'
 
 import styles from './styles/tailwind.css'
 
@@ -84,17 +85,10 @@ const CatchBoundary: React.VFC = () => {
 
   switch (caught.status) {
     case 401:
-      message = (
-        <p>
-          Oops! Looks like you tried to visit a page that you do not have access
-          to.
-        </p>
-      )
+      message = `Oops! Looks like you tried to visit a page that you do not have access to.`
       break
     case 404:
-      message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
-      )
+      message = `Oops! Looks like you tried to visit a page that does not exist.`
       break
     default:
       throw new Error(caught.data || caught.statusText)
@@ -103,12 +97,12 @@ const CatchBoundary: React.VFC = () => {
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
       <Layout>
-        <div className="min-h-screen w-[90%] max-w-5xl mx-auto pt-20 space-y-4 font-mono text-center text-white bg-error-800">
-          <h1 className="inline-block text-3xl font-bold bg-white text-error-800">
-            {caught.status} {caught.statusText}
-          </h1>
-          {message}
-        </div>
+        <Entry
+          title={`${caught.status}.`}
+          tagline={caught.statusText}
+          subtitle={message}
+          image="/images/not-found.jpg"
+        />
       </Layout>
     </Document>
   )
