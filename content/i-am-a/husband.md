@@ -1,7 +1,7 @@
 ---
-subtitle: 'I am a'
-title: 'Husband'
 draft: false
+title: 'Husband'
+subtitle: 'I am a'
 image: '/images/luke-heather.jpg'
 excerpt: '"You being you, lets me be me, and us be us."'
 ---

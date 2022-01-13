@@ -1,8 +1,8 @@
 ---
-title: 'AudioTheme'
 draft: false
-image: '/images/icon-pattern-audiotheme.png' # public/..[build]/images/...
+title: 'AudioTheme'
 excerpt: 'Websites for people who make music.'
+image: '/images/icon-pattern-audiotheme.png' # public/..[build]/images/...
 ---
 
 **AudioTheme** specializes in

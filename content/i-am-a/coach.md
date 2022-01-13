@@ -1,7 +1,7 @@
 ---
-subtitle: 'I am a'
-title: 'Coach'
 draft: false
+title: 'Coach'
+subtitle: 'I am a'
 image: '/images/luke-coach.jpg'
 excerpt:
   '"Success is peace of mind attained only through self-satisfaction in knowing

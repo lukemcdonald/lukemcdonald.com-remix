@@ -1,12 +1,12 @@
 ---
 draft: false
 title: 'Greetings.'
-excerpt: `<div class="bio-subtitle">
+excerpt: '<div class="bio-tagline">
   <a href="/i-am-a/christian">Christian</a>
   <a href="/i-am-a/husband">Husband</a>
   <a href="/i-am-a/father">Father</a>
   <a href="/i-am-a/coach">Coach</a>
-</div>`
+</div>'
 image: '/images/luke-mustachio.jpg'
 ---
 
