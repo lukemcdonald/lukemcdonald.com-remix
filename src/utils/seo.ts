@@ -8,7 +8,6 @@ export const { getSeo, getSeoMeta, getSeoLinks } = initSeo({
     siteName: 'Luke McDonald',
     type: 'website',
     locale: 'en_US',
-    // images: [{ url: '/images/seo-banner.png', alt: 'Luke McDonald' }],
   },
   twitter: {
     creator: 'thelukemcdonald',

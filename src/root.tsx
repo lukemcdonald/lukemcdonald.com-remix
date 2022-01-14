@@ -1,4 +1,6 @@
+import invariant from 'tiny-invariant'
 import {
+  json,
   Links,
   LiveReload,
   Meta,
@@ -7,22 +9,53 @@ import {
   ScrollRestoration,
   useCatch,
 } from 'remix'
-import type { MetaFunction, LinksFunction, ErrorBoundaryComponent } from 'remix'
 
+import type {
+  ErrorBoundaryComponent,
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from 'remix'
+
+import { getDomainUrl, getErrorMessage } from './utils/misc'
 import { getSeoLinks, getSeoMeta } from '~/utils/seo'
 import Layout from '~/components/layout'
 import Entry from './components/entry'
 
 import styles from './styles/tailwind.css'
 
-const meta: MetaFunction = () => ({
-  ...getSeoMeta(),
-  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
-  robots: 'index,follow',
-  googlebot: 'index,follow',
-  'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
-  'theme-color': '#7dc149',
-})
+type LoaderData = {
+  requestInfo: {
+    origin: string
+    path: string
+  }
+}
+
+const meta: MetaFunction = ({ data }) => {
+  const requestInfo = (data as LoaderData | undefined)?.requestInfo
+  invariant(requestInfo, 'Expected requestInfo')
+  console.log('MetaFunction', requestInfo.origin)
+
+  const images = requestInfo?.origin
+    ? [
+        {
+          url: `${requestInfo.origin}/images/seo-banner.png`,
+          alt: 'Luke McDonald',
+        },
+      ]
+    : []
+
+  return {
+    ...getSeoMeta({
+      openGraph: { images },
+    }),
+    viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+    robots: 'index,follow',
+    googlebot: 'index,follow',
+    'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
+    'theme-color': '#7dc149',
+  }
+}
 
 const links: LinksFunction = () => [
   ...getSeoLinks(),
@@ -43,6 +76,16 @@ const links: LinksFunction = () => [
     href: '/favicons/favicon.svg',
   },
 ]
+
+const loader: LoaderFunction = async ({ request }) => {
+  const data: LoaderData = {
+    requestInfo: {
+      origin: getDomainUrl(request),
+      path: new URL(request.url).pathname,
+    },
+  }
+  return json(data)
+}
 
 function App() {
   return (
@@ -123,7 +166,9 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
           excerpt="There was an uncaught exception in your application. Check the browser
           console and/or the server console to inspect the error."
           image="/images/not-found.jpg"
-          html={`<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${error.message}</span></pre>`}
+          html={`<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${getErrorMessage(
+            error,
+          )}</span></pre>`}
         />
       </Layout>
     </Document>
@@ -131,4 +176,4 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
 }
 
 export default App
-export { CatchBoundary, ErrorBoundary, links, meta }
+export { CatchBoundary, ErrorBoundary, links, loader, meta }

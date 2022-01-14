@@ -13,8 +13,6 @@ interface RouteData {
 }
 
 const loader: LoaderFunction = async ({ params }) => {
-  console.log('LoaderFunction', params)
-
   invariant(params.content, 'Expected params.content')
   invariant(params.slug, 'Expected params.slug')
 
