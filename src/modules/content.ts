@@ -42,7 +42,7 @@ export async function getContent(slug: string) {
     return { ...attributes, html, markdown: body }
   } catch (error) {
     console.error(error)
-    throw new Response(`Content cannot be found for at '/${slug}'`, {
+    throw new Response(`Content not found for '/${slug}'`, {
       status: 404,
     })
   }
