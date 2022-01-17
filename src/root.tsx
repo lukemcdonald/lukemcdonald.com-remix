@@ -34,7 +34,6 @@ type LoaderData = {
 const meta: MetaFunction = ({ data }) => {
   const requestInfo = (data as LoaderData | undefined)?.requestInfo
   invariant(requestInfo, 'Expected requestInfo')
-  console.log('MetaFunction', requestInfo.origin)
 
   const images = requestInfo?.origin
     ? [
@@ -48,10 +47,11 @@ const meta: MetaFunction = ({ data }) => {
   return {
     ...getSeoMeta({
       openGraph: { images },
+      twitter: {
+        card: images.length ? 'summary_large_image' : 'summary',
+      },
     }),
-    viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
-    robots: 'index,follow',
-    googlebot: 'index,follow',
+    viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
     'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
     'theme-color': '#7dc149',
   }

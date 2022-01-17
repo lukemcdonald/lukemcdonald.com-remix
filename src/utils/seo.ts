@@ -12,6 +12,5 @@ export const { getSeo, getSeoMeta, getSeoLinks } = initSeo({
   twitter: {
     creator: 'thelukemcdonald',
     site: 'thelukemcdonald',
-    // card: image ? 'summary_large_image' : 'summary',
   },
 })
