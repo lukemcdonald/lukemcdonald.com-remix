@@ -1,11 +1,7 @@
-import React from 'react'
 import clsx from 'clsx'
 
-import type { EntryProps } from '~/components/entry'
-import { SVG } from '../svg'
 import { Mountains } from '../mountains'
-
-// import Mountains from 'images/svgs/mountains.svg'
+import type { EntryProps } from '~/components/entry'
 
 export default function EntryHeader({
   excerpt,

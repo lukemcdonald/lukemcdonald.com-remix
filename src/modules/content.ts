@@ -10,6 +10,7 @@ export interface Content {
   draft: boolean
   html: string
   image: string
+  imageAlt: string
   markdown: string
   excerpt: string
   subtitle: string
@@ -25,8 +26,15 @@ function isValidContentAttributes(
   return required.every(key => Object.keys(attributes).includes(key))
 }
 
-export async function getContent(slug: string) {
-  const filepath = path.join(contentPath, `${slug}.md`)
+export async function getContent({
+  contentDir = '',
+  slug = '',
+}: {
+  contentDir?: string
+  slug: string
+}) {
+  const filename = [contentDir, slug].filter(Boolean).join('/')
+  const filepath = path.join(contentPath, `${filename}.md`)
 
   try {
     const file = await fs.readFile(filepath)
@@ -42,7 +50,7 @@ export async function getContent(slug: string) {
     return { ...attributes, html, markdown: body }
   } catch (error) {
     console.error(error)
-    throw new Response(`Content not found for '/${slug}'`, {
+    throw new Response(`"/${filename}" is not a page on lukemcdonald.com.`, {
       status: 404,
     })
   }

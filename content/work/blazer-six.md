@@ -2,7 +2,7 @@
 draft: false
 title: 'Blazer Six'
 excerpt: 'A friendly webshop 🙂'
-image: '/images/icon-pattern-blazer-six.png'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/icon-pattern-blazer-six_k8xore.png'
 ---
 
 [Blazer Six](https://www.blazersix.com/) builds web solutions for the desktop,

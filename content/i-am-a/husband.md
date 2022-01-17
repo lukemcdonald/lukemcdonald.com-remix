@@ -2,7 +2,7 @@
 draft: false
 title: 'Husband'
 subtitle: 'I am a'
-image: '/images/luke-heather.jpg'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/luke-heather_d8ydxs.jpg'
 excerpt: '"You being you, lets me be me, and us be us."'
 ---
 

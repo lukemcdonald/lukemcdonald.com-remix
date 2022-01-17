@@ -2,7 +2,7 @@
 draft: false
 title: 'Christian'
 subtitle: 'I am a'
-image: '/images/luke-baptism.jpg'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/luke-baptism_i0ocwi.jpg'
 excerpt:
   '"For the wages of sin is death, but the free gift of God is eternal life in
   Christ Jesus our Lord." <a class="text-sm font-semibold tracking-wide uppercase text-primary-800"

@@ -1,13 +1,14 @@
-import React from 'react'
 import clsx from 'clsx'
 
 import EntryHeader from '~/components/entry/header'
 import EntryNav from '~/components/entry/nav'
 import EntryBody from '~/components/entry/body'
 
+import type { ImageBuilder } from '~/utils/images'
+
 export interface EntryProps {
   html?: string
-  image?: string
+  image?: Pick<ImageBuilder, 'id' | 'alt'>
   excerpt?: string
   subtitle?: string
   title: string
@@ -24,7 +25,7 @@ export default function Entry({
     <article className={clsx('entry', 'w-full overflow-hidden bg-primary-800')}>
       <EntryHeader title={title} subtitle={subtitle} excerpt={excerpt} />
       <EntryNav />
-      {(html || image) && <EntryBody html={html} image={image} />}
+      {(html || image) && <EntryBody html={html || ''} image={image} />}
     </article>
   )
 }

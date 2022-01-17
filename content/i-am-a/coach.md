@@ -2,7 +2,7 @@
 draft: false
 title: 'Coach'
 subtitle: 'I am a'
-image: '/images/luke-coach.jpg'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/luke-coach_fa4foy.jpg'
 excerpt:
   '"Success is peace of mind attained only through self-satisfaction in knowing
   you made the effort to do the best of which you are capable." <span

@@ -2,7 +2,7 @@
 draft: false
 title: 'Father'
 subtitle: 'I am a'
-image: '/images/luke-kids.jpg'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/luke-kids_znux81.jpg'
 excerpt:
   '"Like arrows in the hand of a warrior are the children of one’s youth.
   Blessed is the man who fills his quiver with them!" <a class="text-sm font-semibold tracking-wide uppercase text-primary-800"

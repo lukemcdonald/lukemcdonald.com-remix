@@ -17,7 +17,7 @@ interface RouteData {
 }
 
 export const loader: LoaderFunction = async () => {
-  const page = await getContent('index')
+  const page = await getContent({ slug: 'index' })
 
   if (!page) {
     throw new Response('Not Found', {
@@ -31,13 +31,17 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const { page } = useLoaderData()
+  const imageObj = {
+    id: page.image || '',
+    alt: page.imageAlt || page.title || 'Content image',
+  }
 
   return (
     <Entry
       title={page.title}
       excerpt={page.excerpt}
       html={page.html}
-      image={page.image}
+      image={imageObj}
     />
   )
 }

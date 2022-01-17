@@ -2,7 +2,8 @@
 draft: false
 title: 'Cedaro'
 excerpt: 'A digital product shop.'
-image: '/images/icon-pattern-cedaro.png'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/icon-pattern-cedaro_iqst7w.png'
+imageAlt: 'Cedaro icon pattern'
 ---
 
 [Cedaro](https://www.cedaro.com/) is a digital product shop fueled by the folks

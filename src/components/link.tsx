@@ -27,6 +27,7 @@ export default function Link({
       <NavLink
         to={to}
         rel="canonical"
+        prefetch="intent"
         className={({ isActive }) =>
           clsx(
             { activeClassName: isActive, inactiveClassName: !isActive },

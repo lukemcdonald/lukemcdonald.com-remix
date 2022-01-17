@@ -7,7 +7,7 @@ excerpt: '<div class="bio-tagline">
   <a href="/i-am-a/father">Father</a>
   <a href="/i-am-a/coach">Coach</a>
 </div>'
-image: '/images/luke-mustachio.jpg'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/luke-mustachio_igypg7.jpg'
 ---
 
 My

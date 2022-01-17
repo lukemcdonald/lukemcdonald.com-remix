@@ -2,14 +2,23 @@ import React from 'react'
 import clsx from 'clsx'
 
 import type { EntryProps } from '~/components/entry'
+import { getImageBuilder, getImgProps, ImageBuilder } from '~/utils/images'
 
-export default function EntryBody({
-  image,
-  html,
-}: Pick<EntryProps, 'image' | 'html'>) {
+interface EntryBodyProps {
+  image?: Pick<ImageBuilder, 'id' | 'alt'>
+  html?: string
+}
+
+export default function EntryBody({ image, html }: EntryBodyProps) {
+  const [img, setImg] = React.useState({ id: '', alt: '' })
+
+  React.useEffect(() => {
+    if (image) setImg(image)
+  }, [image])
+
   return (
     <div className="entry__body bg-primary-500">
-      {image && (
+      {img?.id && (
         <figure
           className={clsx(
             'entry__media',
@@ -17,7 +26,10 @@ export default function EntryBody({
           )}
         >
           <img
-            src={image}
+            {...getImgProps(getImageBuilder(img), {
+              widths: [750, 1024],
+              sizes: ['100vw'],
+            })}
             className="block lg:pin-t lg:pin-l xs:w-full xs:h-full xs:object-cover lg:absolute lg:w-full lg:h-full"
           />
         </figure>
