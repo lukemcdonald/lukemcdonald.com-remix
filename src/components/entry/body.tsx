@@ -19,18 +19,13 @@ export default function EntryBody({ image, html }: EntryBodyProps) {
   return (
     <div className="entry__body bg-primary-500">
       {img?.id && (
-        <figure
-          className={clsx(
-            'entry__media',
-            'bg-primary-500 relative fill-current',
-          )}
-        >
+        <figure className={clsx('entry__media', 'bg-primary-500 relative')}>
           <img
             {...getImgProps(getImageBuilder(img), {
               widths: [750, 1024],
               sizes: ['100vw'],
             })}
-            className="block lg:pin-t lg:pin-l xs:w-full xs:h-full xs:object-cover lg:absolute lg:w-full lg:h-full"
+            className="block lg:pin-t lg:pin-l xs:w-full xs:h-full xs:object-cover lg:absolute lg:w-full lg:h-full grayscale"
           />
         </figure>
       )}
