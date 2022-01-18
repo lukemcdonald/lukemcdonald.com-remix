@@ -68,7 +68,7 @@ export default function Header() {
     >
       <Link
         to="/"
-        className="relative inline-flex items-center text-white no-underline bg-white group whitespace-nowrap hover:shadow-lg"
+        className="relative z-10 inline-flex items-center text-white no-underline bg-white group whitespace-nowrap hover:shadow-lg"
       >
         <Logo className="w-16 h-16 p-4 fill-current bg-primary-900" />
 
