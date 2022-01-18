@@ -1,6 +1,6 @@
 <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
   <style>
-    svg { color: #175C35; }
+    svg { color: #15824e; }
     @media (prefers-color-scheme: dark) {
       svg { color: #7dc149; }
     }
