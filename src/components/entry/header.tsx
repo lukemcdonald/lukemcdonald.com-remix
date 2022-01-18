@@ -35,7 +35,7 @@ export default function EntryHeader({
         )}
       </div>
 
-      <Mountains className="absolute bottom-0 left-0 z-0" />
+      <Mountains className="absolute bottom-0 left-0 z-0 w-full" />
     </header>
   )
 }
