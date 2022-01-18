@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Cedaro'
-excerpt: 'A digital product shop.'
+description: 'A digital product shop.'
 image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/icon-pattern-cedaro_iqst7w.png'
 imageAlt: 'Cedaro icon pattern'
 ---

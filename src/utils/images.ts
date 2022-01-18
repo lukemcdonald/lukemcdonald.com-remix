@@ -92,6 +92,10 @@ const images = createImages({
     id: 'lukemcdonald-com/logo_vcvrzs',
     alt: 'Luke Mcdonald Logo',
   },
+  notFound: {
+    id: 'lukemcdonald-com/not-found_y5jbrf',
+    alt: 'Not Found',
+  },
   landscapeTreeFog: {
     id: 'lukemcdonald-com/landscape-tree-fog_jz6tjg',
     alt: 'Tree fog background',

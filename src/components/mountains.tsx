@@ -1,4 +1,4 @@
-export function Mountains(props: { className: string }) {
+export function Mountains({ ...props }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" {...props}>
       <polygon className="fill-primary-700" points="957 450 539 900 1396 900" />

@@ -17,48 +17,32 @@ import type {
   MetaFunction,
 } from 'remix'
 
-import { getDomainUrl, getErrorMessage } from './utils/misc'
-import { getSeoLinks, getSeoMeta } from '~/utils/seo'
+import type { RequestInfo } from '~/types'
+import { images } from '~/utils/images'
+import { enhanceMeta } from '~/utils/meta'
+import { getRequestInfo, getErrorMessage } from '~/utils/misc'
 import Layout from '~/components/layout'
-import Entry from './components/entry'
+import Entry from '~/components/entry'
 
-import styles from './styles/tailwind.css'
+import styles from '~/styles/tailwind.css'
 
-type LoaderData = {
-  requestInfo: {
-    origin: string
-    path: string
-  }
-}
+export const meta: MetaFunction = ({ data }) => {
+  const { requestInfo } = data as RequestInfo
+  invariant(requestInfo, 'Expected data.requestInfo')
 
-const meta: MetaFunction = ({ data }) => {
-  const requestInfo = (data as LoaderData | undefined)?.requestInfo
-  invariant(requestInfo, 'Expected requestInfo')
-
-  const images = requestInfo?.origin
-    ? [
-        {
-          url: `${requestInfo.origin}/images/seo-banner.png`,
-          alt: 'Luke McDonald',
-        },
-      ]
-    : []
-
-  return {
-    ...getSeoMeta({
-      openGraph: { images },
-      twitter: {
-        card: images.length ? 'summary_large_image' : 'summary',
-      },
-    }),
-    viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
+  const meta = {
+    image: `${requestInfo.origin}/images/seo-banner.png`,
     'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
     'theme-color': '#7dc149',
   }
+
+  return enhanceMeta(meta, {
+    baseUrl: requestInfo.origin,
+    pathname: requestInfo.pathname,
+  })
 }
 
-const links: LinksFunction = () => [
-  ...getSeoLinks(),
+export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: styles },
   {
     rel: 'apple-touch-icon',
@@ -75,26 +59,17 @@ const links: LinksFunction = () => [
     type: 'image/svg+xml',
     href: '/favicons/favicon.svg',
   },
+  {
+    rel: 'mask-icon',
+    href: '/favicons/favicon.svg',
+    color: '#15824e',
+  },
 ]
 
-const loader: LoaderFunction = async ({ request }) => {
-  const data: LoaderData = {
-    requestInfo: {
-      origin: getDomainUrl(request),
-      path: new URL(request.url).pathname,
-    },
-  }
-  return json(data)
-}
-
-function App() {
-  return (
-    <Document>
-      <Layout>
-        <Outlet />
-      </Layout>
-    </Document>
-  )
+export const loader: LoaderFunction = async ({ request }) => {
+  return json<RequestInfo>({
+    ...getRequestInfo(request),
+  })
 }
 
 function Document({
@@ -108,6 +83,7 @@ function Document({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
@@ -122,10 +98,20 @@ function Document({
   )
 }
 
-const CatchBoundary: React.VFC = () => {
-  let caught = useCatch()
-  let message
+export default function App() {
+  return (
+    <Document>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </Document>
+  )
+}
 
+export function CatchBoundary() {
+  let caught = useCatch()
+
+  let message
   switch (caught.status) {
     case 401:
       message = `Oops! Looks like you tried to visit a page that you do not have access to.`
@@ -143,8 +129,11 @@ const CatchBoundary: React.VFC = () => {
         <Entry
           title={`${caught.status}.`}
           subtitle={caught.statusText}
-          excerpt={message}
-          image="/images/not-found.jpg"
+          description={message}
+          image={{
+            id: images.notFound.id,
+            alt: images.notFound.alt,
+          }}
           html={
             caught?.data &&
             `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught.data}</span></pre>`
@@ -155,7 +144,7 @@ const CatchBoundary: React.VFC = () => {
   )
 }
 
-const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
+export function ErrorBoundry({ error }: { error: ErrorBoundaryComponent }) {
   console.error('Check your server terminal output.')
 
   return (
@@ -163,9 +152,12 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
       <Layout>
         <Entry
           title="Error!"
-          excerpt="There was an uncaught exception in your application. Check the browser
+          description="There was an uncaught exception in your application. Check the browser
           console and/or the server console to inspect the error."
-          image="/images/not-found.jpg"
+          image={{
+            id: images.notFound.id,
+            alt: images.notFound.alt,
+          }}
           html={`<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${getErrorMessage(
             error,
           )}</span></pre>`}
@@ -174,6 +166,3 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
     </Document>
   )
 }
-
-export default App
-export { CatchBoundary, ErrorBoundary, links, loader, meta }

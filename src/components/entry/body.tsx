@@ -1,7 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import type { EntryProps } from '~/components/entry'
 import { getImageBuilder, getImgProps, ImageBuilder } from '~/utils/images'
 
 interface EntryBodyProps {

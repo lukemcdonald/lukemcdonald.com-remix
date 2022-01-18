@@ -1,47 +1,63 @@
-import { LoaderFunction, MetaFunction, useLoaderData } from 'remix'
+import type { LoaderFunction, MetaFunction } from 'remix'
+import { json, useLoaderData } from 'remix'
 
-import Entry from '~/components/entry'
+import type { Content, RequestInfo } from '~/types'
 import { getContent } from '~/modules/content'
-import type { Content } from '~/modules/content'
-import { getSeoMeta } from '~/utils/seo'
+import { enhanceMeta } from '~/utils/meta'
+import { getRequestInfo } from '~/utils/misc'
+import Entry from '~/components/entry'
 
-export const meta: MetaFunction = () => {
-  return getSeoMeta({
-    description:
-      "A christian, husband, father and wrestling coach who's tent making is as a full-stack developer with an eye for design.",
-  })
+interface LoaderData {
+  page: Content
 }
 
-interface RouteData {
-  page: Content
+export const meta: MetaFunction = ({ data, parentsData }) => {
+  if (!data) {
+    return { title: 'Not Found!' }
+  }
+
+  const { requestInfo } = parentsData.root as RequestInfo
+
+  const meta = {
+    description: `I'm Luke, a christian, husband, father and wrestling coach living in beautiful Eastern Iowa. My tent making is as a full-stack developer with an eye for design.`,
+    keywords: [
+      'christian',
+      'coach',
+      'web',
+      'engineer',
+      'developer',
+      'react',
+    ].join(', '),
+  }
+
+  return enhanceMeta(meta, {
+    baseUrl: requestInfo.origin,
+    pathname: requestInfo.pathname,
+  })
 }
 
 export const loader: LoaderFunction = async () => {
   const page = await getContent({ slug: 'index' })
 
-  if (!page) {
-    throw new Response('Not Found', {
-      status: 404,
-    })
+  if (!page || page.draft) {
+    throw new Response('Not Found', { status: 404 })
   }
 
-  const data: RouteData = { page }
-  return data
+  return json<LoaderData>({ page })
 }
 
 export default function Index() {
-  const { page } = useLoaderData()
-  const imageObj = {
-    id: page.image || '',
-    alt: page.imageAlt || page.title || 'Content image',
-  }
+  const { page } = useLoaderData<LoaderData>()
 
   return (
     <Entry
       title={page.title}
-      excerpt={page.excerpt}
+      description={page.description}
       html={page.html}
-      image={imageObj}
+      image={{
+        id: page.image || '',
+        alt: page.imageAlt || page.title || 'Content image',
+      }}
     />
   )
 }

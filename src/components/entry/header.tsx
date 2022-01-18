@@ -4,7 +4,7 @@ import { Mountains } from '../mountains'
 import type { EntryProps } from '~/components/entry'
 
 export default function EntryHeader({
-  excerpt,
+  description,
   subtitle,
   title,
 }: Omit<EntryProps, 'html' | 'image'>) {
@@ -27,10 +27,10 @@ export default function EntryHeader({
 
         <h1 className="mb-6 text-5xl font-semibold">{title}</h1>
 
-        {excerpt && (
+        {description && (
           <div
             className="text-lg leading-normal"
-            dangerouslySetInnerHTML={{ __html: excerpt }}
+            dangerouslySetInnerHTML={{ __html: description }}
           />
         )}
       </div>

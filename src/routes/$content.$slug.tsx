@@ -1,18 +1,35 @@
+import type { LoaderFunction, MetaFunction } from 'remix'
 import { json, useLoaderData } from 'remix'
 import invariant from 'tiny-invariant'
 
-import Entry from '~/components/entry'
+import type { Content, RequestInfo } from '~/types'
 import { getContent } from '~/modules/content'
-import { getSeoMeta } from '~/utils/seo'
+import { enhanceMeta } from '~/utils/meta'
+import Entry from '~/components/entry'
 
-import type { LoaderFunction, MetaFunction } from 'remix'
-import type { Content } from '~/modules/content'
-
-interface RouteData {
+interface LoaderData {
   page: Content
 }
 
-const loader: LoaderFunction = async ({ params }) => {
+export const meta: MetaFunction = ({ data, parentsData }) => {
+  if (!data) {
+    return { title: 'Not Found!' }
+  }
+
+  const { requestInfo } = parentsData.root as RequestInfo
+
+  const meta = {
+    title: data.page.title,
+    description: data.page.description,
+  }
+
+  return enhanceMeta(meta, {
+    baseUrl: requestInfo.origin,
+    pathname: requestInfo.pathname,
+  })
+}
+
+export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.content, 'Expected params.content')
   invariant(params.slug, 'Expected params.slug')
 
@@ -22,43 +39,25 @@ const loader: LoaderFunction = async ({ params }) => {
   })
 
   if (!page || page.draft) {
-    throw new Response('Not Found', {
-      status: 404,
-    })
+    throw new Response('Not Found', { status: 404 })
   }
 
-  const data: RouteData = { page }
-
-  return json(data)
+  return json<LoaderData>({ page })
 }
 
-const meta: MetaFunction = ({ data }: { data: RouteData }) => {
-  if (!data?.page) return getSeoMeta({ title: 'Not Found' })
-
-  const { page } = data
-
-  return getSeoMeta({
-    title: page.title,
-    description: page?.excerpt,
-  })
-}
-
-function ContentSlug() {
-  const { page } = useLoaderData<RouteData>()
-  const imageObj = {
-    id: page.image || '',
-    alt: page.imageAlt || page.title || 'Content image',
-  }
+export default function ContentSlug() {
+  const { page } = useLoaderData<LoaderData>()
 
   return (
     <Entry
       title={page.title}
-      excerpt={page.excerpt}
+      description={page.description}
+      subtitle={page?.subtitle}
       html={page.html}
-      image={imageObj}
+      image={{
+        id: page.image || '',
+        alt: page.imageAlt || page.title || 'Content image',
+      }}
     />
   )
 }
-
-export default ContentSlug
-export { loader, meta }

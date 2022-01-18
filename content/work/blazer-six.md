@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Blazer Six'
-excerpt: 'A friendly webshop 🙂'
+description: 'A friendly webshop 🙂'
 image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/icon-pattern-blazer-six_k8xore.png'
 ---
 

@@ -1,14 +1,9 @@
-const { fontFamily } = require(`tailwindcss/defaultTheme`)
 const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: ['./content/**/*.md', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Fira Sans', ...fontFamily.sans],
-        sans2: ['Archivo', ...fontFamily.sans],
-      },
       maxHeight: {
         site: '675px',
       },

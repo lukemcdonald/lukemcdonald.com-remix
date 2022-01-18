@@ -4,25 +4,15 @@ import parseFrontMatter from 'front-matter'
 import invariant from 'tiny-invariant'
 import { marked } from 'marked'
 
+import type { Content } from '~/types'
+type ContentMarkdownAttributes = Omit<Content, 'html' | 'markdown'>
+
 const contentPath = path.join(__dirname, '..', 'content')
-
-export interface Content {
-  draft: boolean
-  html: string
-  image: string
-  imageAlt: string
-  markdown: string
-  excerpt: string
-  subtitle: string
-  title: string
-}
-
-export type ContentMarkdownAttributes = Omit<Content, 'html' | 'markdown'>
 
 function isValidContentAttributes(
   attributes: any,
 ): attributes is ContentMarkdownAttributes {
-  const required = ['draft', 'image', 'excerpt', 'title']
+  const required = ['draft', 'image', 'description', 'title']
   return required.every(key => Object.keys(attributes).includes(key))
 }
 
