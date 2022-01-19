@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Greetings.'
-description: '<div class="bio-tagline">
+description: '<div class="numbered-list">
   <a href="/i-am-a/christian">Christian</a>
   <a href="/i-am-a/husband">Husband</a>
   <a href="/i-am-a/father">Father</a>

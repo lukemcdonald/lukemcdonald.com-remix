@@ -12,9 +12,9 @@
  */
 
 @import 'tailwindcss/components';
-@import 'components/bio-tagline';
 @import 'components/button';
 @import 'components/entry';
+@import 'components/numbered-list';
 
 /**
   * Utilities
