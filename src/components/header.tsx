@@ -68,7 +68,7 @@ export default function Header() {
     >
       <Link
         to="/"
-        className="relative z-10 inline-flex items-center text-white no-underline bg-white group whitespace-nowrap hover:shadow-lg"
+        className="relative z-10 inline-flex items-center text-white no-underline bg-white group whitespace-nowrap hover:shadow-lg peer"
       >
         <Logo className="w-16 h-16 p-4 fill-current bg-primary-900" />
 
@@ -77,7 +77,7 @@ export default function Header() {
         </h1>
       </Link>
 
-      <Nav className="px-4 duration-200">
+      <Nav className="px-4 duration-200 peer-hover:opacity-0 peer-hover:duration-0 peer-hover:delay-0">
         {menuLinks.map(menuLink => (
           <Nav.Menu key={menuLink.name} link={menuLink} />
         ))}
