@@ -2,7 +2,7 @@
 draft: false
 title: 'AudioTheme'
 description: 'Websites for people who make music.'
-image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/icon-pattern-audiotheme_s4mmrq.png'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642546667/lukemcdonald-com/icon-pattern-audiotheme_sbahtn.png'
 imageAlt: 'AudioTheme icon pattern'
 ---
 

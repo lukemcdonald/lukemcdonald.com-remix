@@ -2,7 +2,7 @@
 draft: false
 title: 'Cedaro'
 description: 'A digital product shop.'
-image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/icon-pattern-cedaro_iqst7w.png'
+image: 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642546667/lukemcdonald-com/icon-pattern-cedaro_hfj4d9.png'
 imageAlt: 'Cedaro icon pattern'
 ---
 
