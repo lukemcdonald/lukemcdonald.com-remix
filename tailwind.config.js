@@ -13,6 +13,9 @@ module.exports = {
         md: '768px',
         lg: '1080px',
       },
+      spacing: {
+        '30vw': '30vw',
+      },
       transitionDelay: {
         0: '0ms',
       },

@@ -12,7 +12,7 @@ export default function EntryHeader({
     <header
       className={clsx(
         'entry__header',
-        'relative overflow-hidden bg-primary-500 justify-center flex flex-col px-5 pt-32 pb-10 text-primary-900 sm:px-10 xl:py-20',
+        'relative overflow-hidden bg-primary-500 justify-center flex flex-col px-5 pt-32 pb-30vw text-primary-900 sm:px-10 lg:pb-10 xl:py-20',
       )}
       style={{
         backgroundSize: '120%',
