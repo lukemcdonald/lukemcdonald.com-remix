@@ -47,17 +47,5 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function ContentSlug() {
   const { page } = useLoaderData<LoaderData>()
-
-  return (
-    <Entry
-      title={page.title}
-      description={page.description}
-      subtitle={page?.subtitle}
-      html={page.html}
-      image={{
-        id: page.image || '',
-        alt: page.imageAlt || page.title || 'Content image',
-      }}
-    />
-  )
+  return <Entry data={page} />
 }

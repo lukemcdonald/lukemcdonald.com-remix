@@ -1,14 +1,7 @@
-import React from 'react'
 import { NavLink } from 'remix'
 import clsx from 'clsx'
 
-interface LinkProps {
-  className?: string
-  inactiveClassName?: string
-  activeClassName?: string
-  children: React.ReactNode
-  to: string
-}
+import type { LinkProps } from '~/types'
 
 export default function Link({
   activeClassName,
@@ -20,7 +13,7 @@ export default function Link({
 }: LinkProps) {
   // This example assumes that any internal link will start with exactly
   // one slash, and that anything else is external.
-  const internal = /^\/(?!\/)/.test(to)
+  const internal = /^\/(?!\/)/.test(to.toString())
 
   if (internal) {
     return (
@@ -42,7 +35,7 @@ export default function Link({
   }
 
   return (
-    <a href={to} className={className} {...other}>
+    <a href={to.toString()} className={className} {...other}>
       {children}
     </a>
   )

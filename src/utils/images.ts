@@ -42,8 +42,8 @@ function getImageBuilder({
     return buildImageUrl(cloudinaryId, { transformations })
   }
 
-  imageBuilder.alt = alt
   imageBuilder.id = cloudinaryId
+  imageBuilder.alt = alt
   return imageBuilder
 }
 

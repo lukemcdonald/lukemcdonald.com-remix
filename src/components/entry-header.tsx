@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 
-import { Mountains } from '../mountains'
-import type { EntryProps } from '~/components/entry'
+import type { EntryHeaderProps } from '~/types'
+import { Mountains } from '~/components/mountains'
 
 export default function EntryHeader({
   description,
   subtitle,
   title,
-}: Omit<EntryProps, 'html' | 'image'>) {
+}: EntryHeaderProps) {
   return (
     <header
       className={clsx(

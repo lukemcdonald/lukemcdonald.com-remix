@@ -48,16 +48,5 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const { page } = useLoaderData<LoaderData>()
-
-  return (
-    <Entry
-      title={page.title}
-      description={page.description}
-      html={page.html}
-      image={{
-        id: page.image || '',
-        alt: page.imageAlt || page.title || 'Content image',
-      }}
-    />
-  )
+  return <Entry data={page} />
 }
