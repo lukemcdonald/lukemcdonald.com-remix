@@ -1,27 +1,18 @@
 import clsx from 'clsx'
 
+import type { MenuLink } from '~/types'
 import Link from '~/components/link'
 import Logo from '~/components/logo'
 import Nav from '~/components/navMenu'
-import type { MenuLink } from '~/components/navMenu'
 
 const menuLinks: MenuLink[] = [
   {
     name: 'Work',
     to: '#',
     links: [
-      {
-        name: 'AudioTheme',
-        to: '/work/audiotheme',
-      },
-      {
-        name: 'Blazer Six',
-        to: '/work/blazer-six',
-      },
-      {
-        name: 'Cedaro',
-        to: '/work/cedaro',
-      },
+      { name: 'AudioTheme', to: '/work/audiotheme' },
+      { name: 'Blazer Six', to: '/work/blazer-six' },
+      { name: 'Cedaro', to: '/work/cedaro' },
     ],
   },
   {
@@ -38,22 +29,10 @@ const menuLinks: MenuLink[] = [
     name: 'Live',
     to: '#',
     links: [
-      {
-        name: 'Faith',
-        to: '/i-am-a/christian',
-      },
-      {
-        name: 'Marriage',
-        to: '/i-am-a/husband',
-      },
-      {
-        name: 'Kids',
-        to: '/i-am-a/father',
-      },
-      {
-        name: 'Coaching',
-        to: '/i-am-a/coach',
-      },
+      { name: 'Faith', to: '/i-am-a/christian' },
+      { name: 'Marriage', to: '/i-am-a/husband' },
+      { name: 'Kids', to: '/i-am-a/father' },
+      { name: 'Coaching', to: '/i-am-a/coach' },
     ],
   },
 ]

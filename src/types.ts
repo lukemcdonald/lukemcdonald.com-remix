@@ -21,6 +21,20 @@ export interface Content {
 export interface LinkProps extends RemixLinkProps {
   inactiveClassName?: string
   activeClassName?: string
+  showExternalIcon?: boolean
+}
+
+export interface MenuLink {
+  name: string
+  to: string
+  links?: MenuLink[]
+}
+
+export interface NavMenuProps {
+  as?: React.ElementType
+  children?: React.ReactNode
+  className?: string
+  link: MenuLink
 }
 
 export type EntryProps = Partial<Omit<Content, 'markdown' | 'draft'>>

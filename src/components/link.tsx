@@ -1,5 +1,6 @@
 import { NavLink } from 'remix'
 import clsx from 'clsx'
+import { ExternalLinkIcon } from '@heroicons/react/solid'
 
 import type { LinkProps } from '~/types'
 
@@ -9,6 +10,7 @@ export default function Link({
   children,
   className,
   to,
+  showExternalIcon,
   ...other
 }: LinkProps) {
   // This example assumes that any internal link will start with exactly
@@ -36,7 +38,10 @@ export default function Link({
 
   return (
     <a href={to.toString()} className={className} {...other}>
-      {children}
+      {children}{' '}
+      {showExternalIcon && (
+        <ExternalLinkIcon className="float-right w-4 h-4 ml-2 opacity-40" />
+      )}
     </a>
   )
 }

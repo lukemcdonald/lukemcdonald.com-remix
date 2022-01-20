@@ -1,25 +1,10 @@
 import React from 'react'
 import clsx from 'clsx'
-
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
+import type { NavMenuProps } from '~/types'
 import Link from '~/components/link'
-
-export type MenuLink = {
-  name: string
-  to: string
-  links?: MenuLinks
-}
-
-export type MenuLinks = MenuLink[]
-
-interface NavMenuProps {
-  as?: React.ElementType
-  children?: React.ReactNode
-  className?: string
-  link: MenuLink
-}
 
 export const NavMenu = ({
   as = 'div',
@@ -59,6 +44,7 @@ export const NavMenu = ({
                       'group flex rounded items-center w-full px-3 py-2 text-base',
                     )}
                     to={item.to}
+                    showExternalIcon={true}
                   >
                     {item.name}
                   </Link>
