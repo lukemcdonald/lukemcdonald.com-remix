@@ -23,20 +23,5 @@ export interface LinkProps extends RemixLinkProps {
   activeClassName?: string
 }
 
-export interface EntryProps {
-  html?: string
-  image?: string
-  imageAlt?: string
-  description?: string
-  subtitle?: string
-  title: string
-}
-
-export interface EntryImgProps {
-  alt: string
-  src: string
-  srcSet: string
-  sizes: string
-}
-
+export type EntryProps = Partial<Omit<Content, 'markdown' | 'draft'>>
 export type EntryHeaderProps = Omit<EntryProps, 'html' | 'image'>
