@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       maxHeight: {
-        site: '675px',
+        site: '720px',
       },
       screens: {
         xs: '420px',
