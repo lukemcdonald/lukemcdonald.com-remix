@@ -1,8 +1,8 @@
 export default function Logo({ ...props }) {
   return (
-    <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M4.438 3.125L.5.5v21h13.125v-3.938H4.437V3.126z" />
-      <path d="M21.5 21.5V.5L10.995 7.509 8.375 5.75v3.938l2.62 1.758 6.568-4.383V21.5H21.5z" />
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+      <path d="m0 0 18 12v66h42v18H0V0Z" />
+      <path d="M96 96H78V33.572L48.083 53.45 36 45.45V23.875l12.083 8.014L96 0v96Z" />
     </svg>
   )
 }
