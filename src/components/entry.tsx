@@ -7,7 +7,7 @@ import ContactInfo from '~/components/contact-info'
 
 export default function Entry({ data }: { data: EntryProps }) {
   return (
-    <article className={clsx('entry', 'w-full overflow-hidden bg-primary-800')}>
+    <article className={clsx('entry', 'bg-primary-800 w-full overflow-hidden')}>
       <EntryHeader
         title={data.title}
         subtitle={data.subtitle}

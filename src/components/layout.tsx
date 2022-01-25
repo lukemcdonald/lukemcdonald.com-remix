@@ -12,14 +12,14 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
           widths: [750, 1080, 1600],
           sizes: ['100vw'],
         })}
-        className="absolute hidden object-cover w-full h-full max-h-screen overflow-hidden transform -translate-x-1/2 -translate-y-1/2 opacity-20 lg:block left-1/2 top-1/2 grayscale"
+        className="absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover opacity-20 grayscale lg:block"
         style={{
           gridArea: '1/1',
         }}
       />
 
       <div
-        className="lg:bg-shadow-lg place-items-center text-primary-900 lg:relative lg:flex lg:items-center lg:justify-center lg:min-h-screen"
+        className="lg:bg-shadow-lg text-primary-900 place-items-center lg:relative lg:flex lg:min-h-screen lg:items-center lg:justify-center"
         style={{
           gridArea: '1/1',
         }}
@@ -27,7 +27,7 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
         <div
           className={clsx(
             'site',
-            'bg-white m-auto relative lg:max-w-screen-xl lg:w-11/12 lg:max-h-site',
+            'lg:max-h-site relative m-auto bg-white lg:w-11/12 lg:max-w-screen-xl',
           )}
         >
           <Header />

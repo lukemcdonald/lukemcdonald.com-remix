@@ -14,7 +14,7 @@ export default function EntryBody({
       {image && (
         <figure className={clsx('entry__media', 'bg-primary-500 relative')}>
           <img
-            className="block w-full h-full xs:object-cover"
+            className="xs:object-cover block h-full w-full"
             {...getImgProps(getImageBuilder({ id: image, alt: imageAlt }), {
               widths: [750, 1024],
               sizes: ['100vw'],
@@ -27,7 +27,7 @@ export default function EntryBody({
         <div
           className={clsx(
             'entry__content',
-            'bg-primary-900 flex flex-col justify-center px-5 py-10 text-lg text-white relative leading-normal xs:px-10',
+            'bg-primary-900 xs:px-10 relative flex flex-col justify-center px-5 py-10 text-lg leading-normal text-white',
           )}
           style={{ wordBreak: 'break-word' }}
           dangerouslySetInnerHTML={{ __html: html }}

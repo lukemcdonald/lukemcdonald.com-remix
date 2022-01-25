@@ -1,5 +1,5 @@
 @layer components {
   .button {
-    @apply p-2 bg-gray-400 rounded;
+    @apply rounded bg-gray-400 p-2;
   }
 }

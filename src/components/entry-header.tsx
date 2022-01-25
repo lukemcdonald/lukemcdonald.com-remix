@@ -12,7 +12,7 @@ export default function EntryHeader({
     <header
       className={clsx(
         'entry__header',
-        'relative overflow-hidden bg-primary-500 justify-center flex flex-col px-5 pt-32 pb-30vw text-primary-900 sm:px-10 lg:pb-10 xl:py-20',
+        'bg-primary-500 pb-30vw text-primary-900 relative flex flex-col justify-center overflow-hidden px-5 pt-32 sm:px-10 lg:pb-10 xl:py-20',
       )}
       style={{
         backgroundSize: '120%',
@@ -20,7 +20,7 @@ export default function EntryHeader({
     >
       <div className="relative z-10">
         {subtitle && (
-          <div className="mb-1 text-sm font-semibold tracking-wider uppercase text-primary-800">
+          <div className="text-primary-800 mb-1 text-sm font-semibold uppercase tracking-wider">
             {subtitle}
           </div>
         )}

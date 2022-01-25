@@ -40,7 +40,7 @@ export default function Link({
     <a href={to.toString()} className={className} {...other}>
       {children}{' '}
       {showExternalIcon && (
-        <ExternalLinkIcon className="float-right w-4 h-4 ml-2 opacity-40" />
+        <ExternalLinkIcon className="float-right ml-2 h-4 w-4 opacity-40" />
       )}
     </a>
   )

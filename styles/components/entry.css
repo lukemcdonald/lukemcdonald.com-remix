@@ -20,7 +20,7 @@
 
   .entry__content {
     a {
-      @apply no-underline border-b-2 text-inherit border-primary-500;
+      @apply border-primary-500 border-b-2 text-inherit no-underline;
     }
   }
 

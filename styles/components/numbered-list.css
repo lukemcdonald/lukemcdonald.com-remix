@@ -5,7 +5,7 @@
     counter-reset: list-number;
 
     a {
-      @apply flex items-center bg-transparent leading-none p-1.5 pr-3 rounded transition relative bg-black bg-opacity-0 hover:bg-opacity-10;
+      @apply relative flex items-center rounded bg-transparent bg-black bg-opacity-0 p-1.5 pr-3 leading-none transition hover:bg-opacity-10;
 
       &:hover:before {
         /* @apply text-primary; */
@@ -16,7 +16,7 @@
       counter-increment: list-number;
       content: counter(list-number);
 
-      @apply inline-flex items-center justify-center h-6 mr-3 text-xs font-semibold leading-none transform -skew-y-6 text-primary-500 bg-primary-900 w-7;
+      @apply text-primary-500 bg-primary-900 mr-3 inline-flex h-6 w-7 -skew-y-6 transform items-center justify-center text-xs font-semibold leading-none;
     }
   }
 }
