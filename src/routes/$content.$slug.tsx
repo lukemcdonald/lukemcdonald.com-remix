@@ -17,7 +17,6 @@ export const meta: MetaFunction = ({ data, parentsData }) => {
   }
 
   const { requestInfo } = parentsData.root as RequestInfo
-
   const meta = {
     title: data.page.title,
     description: data.page.description,

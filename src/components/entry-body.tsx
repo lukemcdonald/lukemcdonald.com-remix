@@ -1,8 +1,8 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import { getImageBuilder, getImgProps } from '~/utils/images'
 import type { EntryProps } from '~/types'
+import { Image } from '~/components/image'
 
 export default function EntryBody({
   html = '',
@@ -13,12 +13,11 @@ export default function EntryBody({
     <div className="entry__body bg-primary-500">
       {image && (
         <figure className={clsx('entry__media', 'bg-primary-500 relative')}>
-          <img
+          <Image
             className="xs:object-cover block h-full w-full"
-            {...getImgProps(getImageBuilder({ id: image, alt: imageAlt }), {
-              widths: [750, 1024],
-              sizes: ['100vw'],
-            })}
+            src={image}
+            alt={imageAlt}
+            widths={[750, 1024]}
           />
         </figure>
       )}

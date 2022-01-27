@@ -18,16 +18,25 @@ export interface Content {
   title: string
 }
 
-export interface LinkProps extends RemixLinkProps {
-  inactiveClassName?: string
-  activeClassName?: string
-  showExternalIcon?: boolean
-}
-
 export interface MenuLink {
   name: string
   to: string
   links?: MenuLink[]
+}
+
+export interface ImageProps {
+  className?: string
+  src: string
+  alt: string
+  widths?: number[]
+  sizes?: string[]
+  style?: any
+}
+
+export interface LinkProps extends RemixLinkProps {
+  inactiveClassName?: string
+  activeClassName?: string
+  showExternalIcon?: boolean
 }
 
 export interface NavMenuProps {

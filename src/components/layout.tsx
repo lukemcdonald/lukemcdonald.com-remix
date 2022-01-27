@@ -1,18 +1,17 @@
 import clsx from 'clsx'
 
-import { getImgProps, images } from '~/utils/images'
 import Header from '~/components/header'
+import { Image } from '~/components/image'
 import Main from '~/components/main'
 
 export default function Layout({ children }: React.PropsWithChildren<{}>) {
   return (
     <div className="lg:grid">
-      <img
-        {...getImgProps(images.landscapeTreeFog, {
-          widths: [750, 1080, 1600],
-          sizes: ['100vw'],
-        })}
+      <Image
         className="absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover opacity-20 grayscale lg:block"
+        src="https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/landscape-tree-fog_jz6tjg.jpg"
+        alt="Tree fog background"
+        widths={[750, 1080, 1600]}
         style={{
           gridArea: '1/1',
         }}

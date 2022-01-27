@@ -87,34 +87,5 @@ function getImgProps(
   }
 }
 
-const images = createImages({
-  logo: {
-    id: 'lukemcdonald-com/logo_vcvrzs',
-    alt: 'Luke Mcdonald Logo',
-  },
-  notFound: {
-    id: 'lukemcdonald-com/not-found_y5jbrf',
-    alt: 'Not Found',
-  },
-  landscapeTreeFog: {
-    id: 'lukemcdonald-com/landscape-tree-fog_jz6tjg',
-    alt: 'Tree fog background',
-  },
-  landscapeTreeTops: {
-    id: 'lukemcdonald-com/landscape-tree-tops_upwt7v',
-    alt: 'Tree fog background',
-  },
-  landscapeWater: {
-    id: 'lukemcdonald-com/landscape-water_zno0rf',
-    alt: 'Water background',
-  },
-})
-
-const bgImages = {
-  treeFog: images.landscapeTreeFog,
-  treeTops: images.landscapeTreeTops,
-  water: images.landscapeWater,
-}
-
-export { images, getImgProps, getImageBuilder }
+export { getImgProps, getImageBuilder }
 export type { ImageBuilder }
