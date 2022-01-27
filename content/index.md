@@ -1,6 +1,6 @@
 ---
 draft: false
-title: 'Greetings.'
+title: 'Greetings'
 description: '<div class="numbered-list">
   <a href="/i-am-a/christian">Christian</a>
   <a href="/i-am-a/husband">Husband</a>

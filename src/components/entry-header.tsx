@@ -25,7 +25,7 @@ export default function EntryHeader({
           </div>
         )}
 
-        <h1 className="mb-6 text-5xl font-semibold">{title}</h1>
+        <h1 className="mb-6 text-5xl font-semibold">{title}.</h1>
 
         {description && (
           <div
