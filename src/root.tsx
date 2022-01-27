@@ -5,6 +5,7 @@ import {
   LiveReload,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
   useCatch,
@@ -67,6 +68,25 @@ export const links: LinksFunction = () => [
 ]
 
 export const loader: LoaderFunction = async ({ request }) => {
+  // Force https
+  let url = new URL(request.url)
+  const hostname = url.hostname
+  const proto = request.headers.get('X-Forwarded-Proto') ?? url.protocol
+
+  url.host =
+    request.headers.get('X-Forwarded-Host') ??
+    request.headers.get('host') ??
+    url.host
+  url.protocol = 'https:'
+
+  if (proto === 'http' && hostname !== 'localhost') {
+    return redirect(url.toString(), {
+      headers: {
+        'X-Forwarded-Proto': 'https',
+      },
+    })
+  }
+
   return json<RequestInfo>({
     ...getRequestInfo(request),
   })
