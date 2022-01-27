@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import type { EntryHeaderProps } from '~/types'
 import { Mountains } from '~/components/mountains'
 
-export default function EntryHeader({
+export function EntryHeader({
   description,
   subtitle,
   title,

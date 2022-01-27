@@ -1,13 +1,14 @@
 import React from 'react'
 import clsx from 'clsx'
-import Link from '~/components/link'
+
+import { Link } from '~/components/link'
 
 const contactLinks = [
   { name: 'GitHub', to: 'https://github.com/lukemcdonald' },
   { name: 'Email', to: 'mailto:thelukemcdonald@gmail.com' },
 ]
 
-export default function ContactInfo({ title }: { title?: string }) {
+export function ContactInfo({ title }: { title?: string }) {
   return (
     <div
       className={clsx(

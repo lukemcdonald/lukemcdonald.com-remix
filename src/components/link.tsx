@@ -1,10 +1,10 @@
-import { NavLink } from 'remix'
 import clsx from 'clsx'
+import { NavLink } from 'remix'
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 
 import type { LinkProps } from '~/types'
 
-export default function Link({
+export function Link({
   activeClassName,
   inactiveClassName,
   children,

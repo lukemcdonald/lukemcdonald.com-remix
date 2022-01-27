@@ -1,10 +1,9 @@
-import React from 'react'
 import clsx from 'clsx'
 
 import type { EntryProps } from '~/types'
 import { Image } from '~/components/image'
 
-export default function EntryBody({
+export function EntryBody({
   html = '',
   image,
   imageAlt = 'Content image',

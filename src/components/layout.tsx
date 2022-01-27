@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 
-import Header from '~/components/header'
+import { Header } from '~/components/header'
 import { Image } from '~/components/image'
-import Main from '~/components/main'
+import { Main } from '~/components/main'
 
-export default function Layout({ children }: React.PropsWithChildren<{}>) {
+export function Layout({ children }: React.PropsWithChildren<{}>) {
   return (
     <div className="lg:grid">
       <Image

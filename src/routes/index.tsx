@@ -4,8 +4,7 @@ import { json, useLoaderData } from 'remix'
 import type { Content, RequestInfo } from '~/types'
 import { getContent } from '~/modules/content'
 import { enhanceMeta } from '~/utils/meta'
-import { getRequestInfo } from '~/utils/misc'
-import Entry from '~/components/entry'
+import { Entry } from '~/components/entry'
 
 interface LoaderData {
   page: Content

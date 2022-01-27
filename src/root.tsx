@@ -21,8 +21,8 @@ import type {
 import type { EntryProps, RequestInfo } from '~/types'
 import { enhanceMeta } from '~/utils/meta'
 import { getRequestInfo, getErrorMessage } from '~/utils/misc'
-import Layout from '~/components/layout'
-import Entry from '~/components/entry'
+import { Entry } from '~/components/entry'
+import { Layout } from '~/components/layout'
 
 import styles from '~/styles/tailwind.css'
 

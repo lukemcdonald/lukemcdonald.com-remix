@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
 import type { MenuLink } from '~/types'
-import Link from '~/components/link'
-import Logo from '~/components/logo'
-import Nav from '~/components/navMenu'
+import { Link } from '~/components/link'
+import { Logo } from '~/components/logo'
+import { Nav } from '~/components/navMenu'
 
 const menuLinks: MenuLink[] = [
   {
@@ -37,7 +37,7 @@ const menuLinks: MenuLink[] = [
   },
 ]
 
-export default function Header() {
+export function Header() {
   return (
     <header
       className={clsx(

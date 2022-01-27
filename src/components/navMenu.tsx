@@ -4,7 +4,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 import type { NavMenuProps } from '~/types'
-import Link from '~/components/link'
+import { Link } from '~/components/link'
 
 export const NavMenu = ({
   as = 'div',
@@ -65,7 +65,7 @@ interface NavProps {
   className?: string
 }
 
-export default class Nav extends React.Component<NavProps, {}> {
+export class Nav extends React.Component<NavProps, {}> {
   static Menu = NavMenu
 
   render() {
