@@ -18,8 +18,7 @@ import type {
   MetaFunction,
 } from 'remix'
 
-import type { RequestInfo } from '~/types'
-import { images } from '~/utils/images'
+import type { EntryProps, RequestInfo } from '~/types'
 import { enhanceMeta } from '~/utils/meta'
 import { getRequestInfo, getErrorMessage } from '~/utils/misc'
 import Layout from '~/components/layout'
@@ -147,16 +146,16 @@ export function CatchBoundary() {
     <Document title={`${caught.status} ${caught.statusText}`}>
       <Layout>
         <Entry
-          title={`${caught.status}.`}
-          subtitle={caught.statusText}
-          description={message}
-          image={{
-            id: images.notFound.id,
-            alt: images.notFound.alt,
-          }}
-          html={
-            caught?.data &&
-            `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught.data}</span></pre>`
+          data={
+            {
+              title: caught.status.toString(),
+              subtitle: caught.statusText,
+              description: message,
+              image:
+                'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
+              imageAlt: 'Little Carly coding.',
+              html: `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught?.data}</span></pre>`,
+            } as EntryProps
           }
         />
       </Layout>
@@ -171,16 +170,18 @@ export function ErrorBoundry({ error }: { error: ErrorBoundaryComponent }) {
     <Document title="Error!">
       <Layout>
         <Entry
-          title="Error!"
-          description="There was an uncaught exception in your application. Check the browser
-          console and/or the server console to inspect the error."
-          image={{
-            id: images.notFound.id,
-            alt: images.notFound.alt,
-          }}
-          html={`<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${getErrorMessage(
-            error,
-          )}</span></pre>`}
+          data={
+            {
+              title: 'Error!',
+              description: `There was an uncaught exception in your application. Check the browser or server console to inspect the error.`,
+              image:
+                'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
+              imageAlt: 'Little Carly coding.',
+              html: `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${getErrorMessage(
+                error,
+              )}</span></pre>`,
+            } as EntryProps
+          }
         />
       </Layout>
     </Document>
