@@ -12,19 +12,16 @@ interface LoaderData {
 }
 
 export const meta: MetaFunction = ({ data, parentsData }) => {
-  if (!data) {
-    return { title: 'Not Found!' }
-  }
+  const requestInfo = (parentsData.root as RequestInfo | undefined)?.requestInfo
 
-  const { requestInfo } = parentsData.root as RequestInfo
   const meta = {
-    title: data.page.title,
-    description: data.page.description,
+    title: data?.page.title,
+    description: data?.page.description,
   }
 
   return enhanceMeta(meta, {
-    baseUrl: requestInfo.origin,
-    pathname: requestInfo.pathname,
+    baseUrl: requestInfo?.origin,
+    pathname: requestInfo?.pathname,
   })
 }
 

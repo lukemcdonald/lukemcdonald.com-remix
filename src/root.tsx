@@ -1,4 +1,3 @@
-import invariant from 'tiny-invariant'
 import {
   json,
   Links,
@@ -27,18 +26,17 @@ import { Layout } from '~/components/layout'
 import styles from '~/styles/tailwind.css'
 
 export const meta: MetaFunction = ({ data }) => {
-  const { requestInfo } = data as RequestInfo
-  invariant(requestInfo, 'Expected data.requestInfo')
+  const requestInfo = (data as RequestInfo | undefined)?.requestInfo
 
   const meta = {
-    image: `${requestInfo.origin}/images/seo-banner.png`,
+    image: `${requestInfo?.origin}/images/seo-banner.png`,
     'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
     'theme-color': '#7dc149',
   }
 
   return enhanceMeta(meta, {
-    baseUrl: requestInfo.origin,
-    pathname: requestInfo.pathname,
+    baseUrl: requestInfo?.origin,
+    pathname: requestInfo?.pathname,
   })
 }
 
@@ -162,7 +160,9 @@ export function CatchBoundary() {
               image:
                 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
               imageAlt: 'Little Carly coding.',
-              html: `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught?.data}</span></pre>`,
+              html:
+                caught?.data &&
+                `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught.data}</span></pre>`,
             } as EntryProps
           }
         />

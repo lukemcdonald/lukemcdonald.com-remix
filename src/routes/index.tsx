@@ -10,12 +10,8 @@ interface LoaderData {
   page: Content
 }
 
-export const meta: MetaFunction = ({ data, parentsData }) => {
-  if (!data) {
-    return { title: 'Not Found!' }
-  }
-
-  const { requestInfo } = parentsData.root as RequestInfo
+export const meta: MetaFunction = ({ parentsData }) => {
+  const requestInfo = (parentsData.root as RequestInfo | undefined)?.requestInfo
 
   const meta = {
     description: `I'm Luke, a christian, husband, father and wrestling coach living in beautiful Eastern Iowa. My tent making is as a full-stack developer with an eye for design.`,
@@ -30,12 +26,12 @@ export const meta: MetaFunction = ({ data, parentsData }) => {
   }
 
   return enhanceMeta(meta, {
-    baseUrl: requestInfo.origin,
-    pathname: requestInfo.pathname,
+    baseUrl: requestInfo?.origin,
+    pathname: requestInfo?.pathname,
   })
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ params }) => {
   const page = await getContent({ slug: 'index' })
 
   if (!page || page.draft) {
