@@ -1,3 +1,5 @@
+// Alternate solution: https://github.com/edmundhung/remix-guide/blob/main/app/helpers.ts#L7
+
 export type Metadata = Record<string, any>
 
 function clearMeta(meta: Record<string, string>): Record<string, string> {

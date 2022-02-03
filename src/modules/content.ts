@@ -5,6 +5,8 @@ import invariant from 'tiny-invariant'
 import { marked } from 'marked'
 
 import type { Content } from '~/types'
+import { pageNotFound } from '~/utils/misc'
+
 type ContentMarkdownAttributes = Omit<Content, 'html' | 'markdown'>
 
 const contentPath = path.join(__dirname, '..', 'content')
@@ -37,11 +39,9 @@ export async function getContent({
 
     const html = marked(body)
 
-    return { ...attributes, html, markdown: body }
+    return { ...attributes, html, markdown: body, filename }
   } catch (error) {
     console.error(error)
-    throw new Response(`"/${filename}" is not a page on lukemcdonald.com.`, {
-      status: 404,
-    })
+    throw pageNotFound(filename)
   }
 }

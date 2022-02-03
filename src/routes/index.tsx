@@ -5,6 +5,7 @@ import type { Content, RequestInfo } from '~/types'
 import { getContent } from '~/modules/content'
 import { enhanceMeta } from '~/utils/meta'
 import { Entry } from '~/components/entry'
+import { pageNotFound } from '~/utils/misc'
 
 interface LoaderData {
   page: Content
@@ -34,8 +35,8 @@ export const meta: MetaFunction = ({ parentsData }) => {
 export const loader: LoaderFunction = async ({ params }) => {
   const page = await getContent({ slug: 'index' })
 
-  if (!page || page.draft) {
-    throw new Response('Not Found', { status: 404 })
+  if (page?.draft) {
+    throw pageNotFound(page.filename)
   }
 
   return json<LoaderData>({ page })

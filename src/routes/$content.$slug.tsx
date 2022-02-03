@@ -5,6 +5,7 @@ import invariant from 'tiny-invariant'
 import type { Content, RequestInfo } from '~/types'
 import { getContent } from '~/modules/content'
 import { enhanceMeta } from '~/utils/meta'
+import { pageNotFound } from '~/utils/misc'
 import { Entry } from '~/components/entry'
 
 interface LoaderData {
@@ -15,8 +16,8 @@ export const meta: MetaFunction = ({ data, parentsData }) => {
   const requestInfo = (parentsData.root as RequestInfo | undefined)?.requestInfo
 
   const meta = {
-    title: data?.page.title,
-    description: data?.page.description,
+    title: data?.page?.title,
+    description: data?.page?.description,
   }
 
   return enhanceMeta(meta, {
@@ -34,8 +35,8 @@ export const loader: LoaderFunction = async ({ params }) => {
     slug: params.slug,
   })
 
-  if (!page || page.draft) {
-    throw new Response('Not Found', { status: 404 })
+  if (page?.draft) {
+    throw pageNotFound(page.filename)
   }
 
   return json<LoaderData>({ page })
