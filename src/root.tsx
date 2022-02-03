@@ -86,6 +86,14 @@ export const loader: LoaderFunction = async ({ request }) => {
     })
   }
 
+  if (url.host.includes('www.')) {
+    return redirect(url.toString().replace('www.', ''), {
+      headers: {
+        'X-Forwarded-Proto': 'https',
+      },
+    })
+  }
+
   return json<RequestInfo>({
     ...getRequestInfo(request),
   })

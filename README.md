@@ -32,10 +32,9 @@ information.
 
 ## Ideas
 
-[ ] Consider adding content using Sanity.io or Strapi
-
-- https://www.sanity.io/guides/remix-run-live-preview
-- https://github.com/SimeonGriggs/simeonGriggs
-
-[ ] Consider using [Rome](https://rome.tools/#development-status) for a linter,
-compiler, bundler, and formatter.
+- [ ] Setup redirects for Fly.io. See old Netlify redirect .toml
+- [ ] Consider adding content using Sanity.io or Strapi
+  - https://www.sanity.io/guides/remix-run-live-preview
+  - https://github.com/SimeonGriggs/simeonGriggs
+- [ ] Consider using [Rome](https://rome.tools/#development-status) for a
+      linter, compiler, bundler, and formatter.
