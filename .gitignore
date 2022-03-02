@@ -1,14 +1,14 @@
-.vscode/
-.DS_Store
-node_modules/
+node_modules
 
+# Remix
 /.cache
 /build
 /public/build
-/src/styles/**/*.css
 
-*.local.*
+# Tailwind
+/src/styles/tailwind.css
 
+# Misc
 .env
-.env.production
-.envrc
+.vscode
+.DS_Store
