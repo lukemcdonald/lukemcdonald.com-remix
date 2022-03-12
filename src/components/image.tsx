@@ -12,6 +12,7 @@ export function Image({
   return (
     <img
       className={className}
+      decoding="async"
       {...getImgProps(getImageBuilder({ id, alt }), {
         widths,
         sizes,
