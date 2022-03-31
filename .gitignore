@@ -6,7 +6,7 @@ node_modules
 /public/build
 
 # Tailwind
-/src/styles/tailwind.css
+/app/styles/tailwind.css
 
 # Misc
 .env

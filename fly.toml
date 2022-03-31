@@ -1,7 +1,4 @@
-# fly.toml file generated for lukemcdonald on 2021-12-28T14:55:41-06:00
-
 app = "lukemcdonald"
-
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -28,6 +25,7 @@ type = "connections"
 [[services.ports]]
 handlers = ["http"]
 port = 80
+force_https = true
 
 [[services.ports]]
 handlers = ["tls", "http"]

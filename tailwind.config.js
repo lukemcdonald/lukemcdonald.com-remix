@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./content/**/*.md', './src/**/*.{ts,tsx}'],
+  content: ['./content/**/*.md', './app/**/*.{ts,tsx}'],
   theme: {
     extend: {
       maxHeight: {
