@@ -6,8 +6,8 @@
   }
 
   .entry__header {
-    text-shadow: -3px -3px 10px #7dc149, 3px -3px 15px #7dc149,
-      -3px 3px 10px #7dc149, 3px 3px 15px #7dc149;
+    text-shadow: -3px -3px 10px #7dc149, 3px -3px 15px #7dc149, -3px 3px 10px #7dc149,
+      3px 3px 15px #7dc149;
   }
 
   .entry__body {
@@ -20,7 +20,7 @@
 
   .entry__content {
     a {
-      @apply border-primary-500 border-b-2 text-inherit no-underline;
+      @apply border-b-2 border-primary-500 text-inherit no-underline;
     }
   }
 

@@ -24,10 +24,7 @@ export function Link({
         rel="canonical"
         prefetch="intent"
         className={({ isActive }) =>
-          clsx(
-            { activeClassName: isActive, inactiveClassName: !isActive },
-            className,
-          )
+          clsx({ activeClassName: isActive, inactiveClassName: !isActive }, className)
         }
         {...other}
       >
@@ -39,9 +36,7 @@ export function Link({
   return (
     <a href={to.toString()} className={className} {...other}>
       {children}{' '}
-      {showExternalIcon && (
-        <ExternalLinkIcon className="float-right ml-2 h-4 w-4 opacity-40" />
-      )}
+      {showExternalIcon && <ExternalLinkIcon className="float-right ml-2 h-4 w-4 opacity-40" />}
     </a>
   )
 }

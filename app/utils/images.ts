@@ -12,10 +12,8 @@ type ImageBuilder = {
   id: string
 }
 
-const createImages = <
-  ImageType extends Record<string, { id: string; alt: string }>,
->(
-  images: ImageType,
+const createImages = <ImageType extends Record<string, { id: string; alt: string }>>(
+  images: ImageType
 ) => {
   const imageBuilders: Record<string, ImageBuilder> = {}
   for (const [name, { id, alt }] of Object.entries(images)) {
@@ -24,19 +22,11 @@ const createImages = <
   return imageBuilders as { [Name in keyof ImageType]: ImageBuilder }
 }
 
-function getImageBuilder({
-  id,
-  alt = '',
-}: {
-  id: string
-  alt: string
-}): ImageBuilder {
+function getImageBuilder({ id, alt = '' }: { id: string; alt: string }): ImageBuilder {
   invariant(id, `Expected typeof id of string but instead got ${id}`)
 
   const cloudinaryId =
-    typeof id === 'string' && id.includes('https://res.cloudinary.com')
-      ? extractPublicId(id)
-      : id
+    typeof id === 'string' && id.includes('https://res.cloudinary.com') ? extractPublicId(id) : id
 
   function imageBuilder(transformations?: TransformerOption) {
     return buildImageUrl(cloudinaryId, { transformations })
@@ -57,7 +47,7 @@ function getImgProps(
     widths: number[]
     sizes: string[]
     transformations?: TransformerOption
-  },
+  }
 ) {
   const averageSize = Math.ceil(widths.reduce((a, s) => a + s) / widths.length)
 
@@ -71,7 +61,7 @@ function getImgProps(
       resize: { width: averageSize, ...transformations?.resize },
     }),
     srcSet: widths
-      .map(width =>
+      .map((width) =>
         [
           imageBuilder({
             quality: 'auto',
@@ -80,7 +70,7 @@ function getImgProps(
             resize: { width, ...transformations?.resize },
           }),
           `${width}w`,
-        ].join(' '),
+        ].join(' ')
       )
       .join(', '),
     sizes: sizes.join(', '),

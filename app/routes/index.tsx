@@ -16,14 +16,7 @@ export const meta: MetaFunction = ({ parentsData }) => {
 
   const meta = {
     description: `I'm Luke, a christian, husband, father and wrestling coach living in beautiful Eastern Iowa. My tent making is as a full-stack developer with an eye for design.`,
-    keywords: [
-      'christian',
-      'coach',
-      'web',
-      'engineer',
-      'developer',
-      'react',
-    ].join(', '),
+    keywords: ['christian', 'coach', 'web', 'engineer', 'developer', 'react'].join(', '),
   }
 
   return enhanceMeta(meta, {

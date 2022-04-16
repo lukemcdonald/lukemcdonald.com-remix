@@ -7,20 +7,12 @@ import { ContactInfo } from '~/components/contact-info'
 
 export function Entry({ data }: { data: EntryProps }) {
   return (
-    <article className={clsx('entry', 'bg-primary-800 w-full overflow-hidden')}>
-      <EntryHeader
-        title={data.title}
-        subtitle={data.subtitle}
-        description={data.description}
-      />
+    <article className={clsx('entry', 'w-full overflow-hidden bg-primary-800')}>
+      <EntryHeader title={data.title} subtitle={data.subtitle} description={data.description} />
 
       <ContactInfo />
 
-      <EntryBody
-        html={data.html}
-        image={data.image}
-        imageAlt={data.imageAlt || data.title}
-      />
+      <EntryBody html={data.html} image={data.image} imageAlt={data.imageAlt || data.title} />
     </article>
   )
 }

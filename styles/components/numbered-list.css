@@ -16,7 +16,7 @@
       counter-increment: list-number;
       content: counter(list-number);
 
-      @apply text-primary-500 bg-primary-900 mr-3 inline-flex h-6 w-7 -skew-y-6 transform items-center justify-center text-xs font-semibold leading-none;
+      @apply mr-3 inline-flex h-6 w-7 -skew-y-6 transform items-center justify-center bg-primary-900 text-xs font-semibold leading-none text-primary-500;
     }
   }
 }

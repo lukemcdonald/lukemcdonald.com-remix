@@ -3,17 +3,13 @@ import clsx from 'clsx'
 import type { EntryProps } from '~/types'
 import { Image } from '~/components/image'
 
-export function EntryBody({
-  html = '',
-  image,
-  imageAlt = 'Content image',
-}: EntryProps) {
+export function EntryBody({ html = '', image, imageAlt = 'Content image' }: EntryProps) {
   return (
     <div className="entry__body bg-primary-500">
       {image && (
-        <figure className={clsx('entry__media', 'bg-primary-500 relative')}>
+        <figure className={clsx('entry__media', 'relative bg-primary-500')}>
           <Image
-            className="xs:object-cover block h-full w-full"
+            className="block h-full w-full xs:object-cover"
             src={image}
             alt={imageAlt}
             widths={[750, 1024]}
@@ -25,7 +21,7 @@ export function EntryBody({
         <div
           className={clsx(
             'entry__content',
-            'bg-primary-900 xs:px-10 relative flex flex-col justify-center px-5 py-10 text-lg leading-normal text-white',
+            'relative flex flex-col justify-center bg-primary-900 px-5 py-10 text-lg leading-normal text-white xs:px-10'
           )}
           style={{ wordBreak: 'break-word' }}
           dangerouslySetInnerHTML={{ __html: html }}

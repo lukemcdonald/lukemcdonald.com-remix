@@ -42,22 +42,22 @@ export function Header() {
     <header
       className={clsx(
         'absolute top-0 left-0 z-50 flex w-full items-center p-5 lg:w-1/2 ',
-        'site-header',
+        'site-header'
       )}
     >
       <Link
         to="/"
         className="group peer relative z-10 inline-flex items-center whitespace-nowrap bg-white text-white no-underline hover:shadow-lg"
       >
-        <Logo className="bg-primary-900 h-16 w-16 fill-current p-4" />
+        <Logo className="h-16 w-16 bg-primary-900 fill-current p-4" />
 
-        <h1 className="text-primary-900 absolute left-16 flex h-16 max-w-0 items-center overflow-hidden bg-white px-0 text-xl font-bold uppercase tracking-wide shadow-lg transition-all duration-150 group-hover:max-w-6xl group-hover:px-4 group-hover:duration-300">
+        <h1 className="absolute left-16 flex h-16 max-w-0 items-center overflow-hidden bg-white px-0 text-xl font-bold uppercase tracking-wide text-primary-900 shadow-lg transition-all duration-150 group-hover:max-w-6xl group-hover:px-4 group-hover:duration-300">
           Luke McDonald
         </h1>
       </Link>
 
-      <Nav className="peer-hover:duration-0 peer-hover:delay-0 px-4 duration-200 peer-hover:opacity-0">
-        {menuLinks.map(menuLink => (
+      <Nav className="px-4 duration-200 peer-hover:opacity-0 peer-hover:delay-0 peer-hover:duration-0">
+        {menuLinks.map((menuLink) => (
           <Nav.Menu key={menuLink.name} link={menuLink} />
         ))}
       </Nav>

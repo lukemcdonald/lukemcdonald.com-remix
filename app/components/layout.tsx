@@ -18,7 +18,7 @@ export function Layout({ children }: React.PropsWithChildren<{}>) {
       />
 
       <div
-        className="lg:bg-shadow-lg text-primary-900 place-items-center lg:relative lg:flex lg:min-h-screen lg:items-center lg:justify-center"
+        className="lg:bg-shadow-lg place-items-center text-primary-900 lg:relative lg:flex lg:min-h-screen lg:items-center lg:justify-center"
         style={{
           gridArea: '1/1',
         }}
@@ -26,7 +26,7 @@ export function Layout({ children }: React.PropsWithChildren<{}>) {
         <div
           className={clsx(
             'site',
-            'lg:max-h-site relative m-auto bg-white lg:w-11/12 lg:max-w-screen-xl',
+            'relative m-auto bg-white lg:max-h-site lg:w-11/12 lg:max-w-screen-xl'
           )}
         >
           <Header />

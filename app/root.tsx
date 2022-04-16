@@ -10,12 +10,7 @@ import {
   useCatch,
 } from 'remix'
 
-import type {
-  ErrorBoundaryComponent,
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from 'remix'
+import type { ErrorBoundaryComponent, LinksFunction, LoaderFunction, MetaFunction } from 'remix'
 
 import type { EntryProps, RequestInfo } from '~/types'
 import { enhanceMeta } from '~/utils/meta'
@@ -70,10 +65,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const hostname = url.hostname
   const proto = request.headers.get('X-Forwarded-Proto') ?? url.protocol
 
-  url.host =
-    request.headers.get('X-Forwarded-Host') ??
-    request.headers.get('host') ??
-    url.host
+  url.host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host') ?? url.host
   url.protocol = 'https:'
 
   if (proto === 'http' && hostname !== 'localhost') {
@@ -97,13 +89,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   })
 }
 
-function Document({
-  children,
-  title,
-}: {
-  children: React.ReactNode
-  title?: string
-}) {
+function Document({ children, title }: { children: React.ReactNode; title?: string }) {
   return (
     <html lang="en">
       <head>
@@ -186,7 +172,7 @@ export function ErrorBoundry({ error }: { error: ErrorBoundaryComponent }) {
                 'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
               imageAlt: 'Little Carly coding.',
               html: `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${getErrorMessage(
-                error,
+                error
               )}</span></pre>`,
             } as EntryProps
           }

@@ -4,15 +4,13 @@ export type Metadata = Record<string, any>
 
 function clearMeta(meta: Record<string, string>): Record<string, string> {
   const entries = Object.entries(meta).filter(
-    ([_, value]) => typeof value !== 'undefined' && value.trim() !== '',
+    ([_, value]) => typeof value !== 'undefined' && value.trim() !== ''
   )
 
   return Object.fromEntries(entries)
 }
 
-export function deriveMetaFromMetadata(
-  metadata: Metadata,
-): Record<string, string> {
+export function deriveMetaFromMetadata(metadata: Metadata): Record<string, string> {
   return clearMeta({
     title: metadata.title,
     description: metadata.description,
@@ -32,22 +30,15 @@ interface EnhanceMetaOptions {
   twitterSite: string
 }
 
-export function createMetaEnhancer(
-  defaultOptions: Omit<EnhanceMetaOptions, 'pathname'>,
-) {
+export function createMetaEnhancer(defaultOptions: Omit<EnhanceMetaOptions, 'pathname'>) {
   return (
     meta: Record<string, string>,
-    options: Partial<EnhanceMetaOptions> = {},
+    options: Partial<EnhanceMetaOptions> = {}
   ): Record<string, string> => {
-    const {
-      siteName,
-      baseUrl,
-      pathname,
-      author,
-      type,
-      twitterCard,
-      twitterSite,
-    } = { ...defaultOptions, ...options }
+    const { siteName, baseUrl, pathname, author, type, twitterCard, twitterSite } = {
+      ...defaultOptions,
+      ...options,
+    }
 
     const title = meta.title ? `${meta.title} — ${siteName}` : siteName
     const url = pathname === '/' ? baseUrl : `${baseUrl}${pathname}`

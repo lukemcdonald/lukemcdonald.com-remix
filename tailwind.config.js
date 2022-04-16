@@ -22,7 +22,7 @@ module.exports = {
       transitionDuration: {
         0: '0ms',
       },
-      typography: theme => ({
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             a: {

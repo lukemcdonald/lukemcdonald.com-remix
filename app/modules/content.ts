@@ -11,11 +11,9 @@ type ContentMarkdownAttributes = Omit<Content, 'html' | 'markdown'>
 
 const contentPath = path.join(__dirname, '..', 'content')
 
-function isValidContentAttributes(
-  attributes: any,
-): attributes is ContentMarkdownAttributes {
+function isValidContentAttributes(attributes: any): attributes is ContentMarkdownAttributes {
   const required = ['draft', 'image', 'description', 'title']
-  return required.every(key => Object.keys(attributes).includes(key))
+  return required.every((key) => Object.keys(attributes).includes(key))
 }
 
 export async function getContent({
@@ -32,10 +30,7 @@ export async function getContent({
     const file = await fs.readFile(filepath)
     const { attributes, body } = parseFrontMatter(file.toString())
 
-    invariant(
-      isValidContentAttributes(attributes),
-      `Content ${filepath} is missing attributes.`,
-    )
+    invariant(isValidContentAttributes(attributes), `Content ${filepath} is missing attributes.`)
 
     const html = marked(body)
 
