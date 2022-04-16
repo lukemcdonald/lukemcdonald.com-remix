@@ -12,16 +12,6 @@ type ImageBuilder = {
   id: string
 }
 
-const createImages = <ImageType extends Record<string, { id: string; alt: string }>>(
-  images: ImageType
-) => {
-  const imageBuilders: Record<string, ImageBuilder> = {}
-  for (const [name, { id, alt }] of Object.entries(images)) {
-    imageBuilders[name] = getImageBuilder({ id, alt })
-  }
-  return imageBuilders as { [Name in keyof ImageType]: ImageBuilder }
-}
-
 function getImageBuilder({ id, alt = '' }: { id: string; alt: string }): ImageBuilder {
   invariant(id, `Expected typeof id of string but instead got ${id}`)
 

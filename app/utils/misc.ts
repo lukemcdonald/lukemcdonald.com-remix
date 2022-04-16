@@ -1,4 +1,4 @@
-import { RequestInfo } from '~/types'
+import type { RequestInfo } from '~/types'
 
 function getDomainUrl(request: Request) {
   const host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host')
