@@ -5,6 +5,7 @@
 
 @import 'tailwindcss/base';
 @import 'base/layout';
+@import 'base/theme';
 
 /**
  * Components
@@ -15,6 +16,7 @@
 @import 'components/button';
 @import 'components/entry';
 @import 'components/numbered-list';
+@import 'components/theme-select';
 
 /**
  * Utilities

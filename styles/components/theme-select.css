@@ -1,0 +1,11 @@
+@layer components {
+  .theme-select {
+    @apply hidden;
+  }
+}
+
+@supports selector(:has(*)) {
+  .theme-select {
+    @apply block;
+  }
+}

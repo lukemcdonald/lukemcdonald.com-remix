@@ -5,11 +5,11 @@ import { Image } from '~/components/image'
 
 export function EntryBody({ html = '', image, imageAlt = 'Content image' }: EntryProps) {
   return (
-    <div className="entry__body bg-primary-500">
+    <div className="entry__body bg-primary-900">
       {image && (
-        <figure className={clsx('entry__media', 'relative bg-primary-500')}>
+        <figure className={clsx('entry__media', 'relative bg-primary-500 mix-blend-lighten')}>
           <Image
-            className="block h-full w-full xs:object-cover"
+            className="block h-full w-full grayscale xs:object-cover"
             src={image}
             alt={imageAlt}
             widths={[750, 1024]}
