@@ -861,30 +861,6 @@ html:has(button[data-theme='orange']) {
   height: 1.25rem;
 }
 
-.h-\[4\.5\] {
-  height: 4.5;
-}
-
-.h-\[4\.5rem\] {
-  height: 4.5rem;
-}
-
-.h-\[2rem\] {
-  height: 2rem;
-}
-
-.h-\[1\.25rem\] {
-  height: 1.25rem;
-}
-
-.h-\[1\.2rem\] {
-  height: 1.2rem;
-}
-
-.h-\[1\.5rem\] {
-  height: 1.5rem;
-}
-
 .h-\[1\.15rem\] {
   height: 1.15rem;
 }
@@ -923,30 +899,6 @@ html:has(button[data-theme='orange']) {
 
 .w-44 {
   width: 11rem;
-}
-
-.w-\[4\.5\] {
-  width: 4.5;
-}
-
-.w-\[4\.5rem\] {
-  width: 4.5rem;
-}
-
-.w-\[2rem\] {
-  width: 2rem;
-}
-
-.w-\[1\.25rem\] {
-  width: 1.25rem;
-}
-
-.w-\[1\.2rem\] {
-  width: 1.2rem;
-}
-
-.w-\[1\.5rem\] {
-  width: 1.5rem;
 }
 
 .w-\[1\.15rem\] {

@@ -46,7 +46,6 @@ export function ThemeSelect() {
     let color = options[0].classes.dark
 
     if (option?.classes) {
-      console.log({ option, mode })
       const { light, dark } = option.classes
       color = currentMode === 'dark' ? light : dark
     }
