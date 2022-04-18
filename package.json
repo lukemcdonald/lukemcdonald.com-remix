@@ -12,7 +12,9 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "postinstall": "remix setup node",
     "predeploy": "npm run build",
-    "deploy": "fly deploy --remote-only",
+    "deploy:remote": "fly deploy --remote-only",
+    "deploy:local": "fly deploy --local-only",
+    "deploy": "fly --app lukemcdonald deploy .",
     "start": "remix-serve build"
   },
   "dependencies": {
