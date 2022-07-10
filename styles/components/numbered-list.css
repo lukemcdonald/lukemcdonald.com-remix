@@ -5,7 +5,7 @@
     counter-reset: list-number;
 
     a {
-      @apply relative flex items-center rounded bg-transparent bg-black bg-opacity-0 p-1.5 pr-3 leading-none transition hover:bg-opacity-10;
+      @apply relative flex items-center rounded bg-transparent bg-black bg-opacity-0 p-1.5 pr-3 leading-none transition hover:bg-opacity-5;
 
       &:hover:before {
         /* @apply text-primary; */

@@ -8,7 +8,7 @@ import { Link } from '~/components/link'
 
 export const NavMenu = ({ as = 'div', children, className, link }: NavMenuProps) => (
   <Menu as={as} className={clsx('relative inline-block text-left', className)}>
-    <Menu.Button className="inline-flex justify-center rounded-md bg-black bg-opacity-0 px-3 py-2 text-base uppercase tracking-wide text-primary-900 hover:bg-opacity-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+    <Menu.Button className="inline-flex justify-center rounded-md bg-black bg-opacity-0 px-3 py-2 text-base uppercase tracking-wide text-primary-900 hover:bg-opacity-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
       <span>{link.name}</span>
       <ChevronDownIcon className="mt-px ml-1 h-5 w-5 text-primary-900" aria-hidden="true" />
     </Menu.Button>
