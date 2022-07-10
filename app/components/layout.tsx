@@ -26,7 +26,7 @@ export function Layout({ children }: React.PropsWithChildren<{}>) {
     <div className={clsx('lg:grid', currentMode === 'dark' ? 'bg-black' : '')}>
       <Image
         className={clsx(
-          'absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover  grayscale lg:block',
+          'absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover blur-sm grayscale lg:block',
           currentMode === 'dark' ? 'opacity-30 mix-blend-hard-light' : 'opacity-20'
         )}
         src="https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/landscape-tree-fog_jz6tjg.jpg"
