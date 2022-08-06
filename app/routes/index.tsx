@@ -1,5 +1,6 @@
-import type { LoaderFunction, MetaFunction } from 'remix'
-import { json, useLoaderData } from 'remix'
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
 import type { Content, RequestInfo } from '~/types'
 import { getContent } from '~/modules/content'

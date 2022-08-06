@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { NavLink } from 'remix'
+import { NavLink } from "@remix-run/react";
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 
 import type { LinkProps } from '~/types'

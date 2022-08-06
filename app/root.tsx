@@ -1,16 +1,6 @@
-import {
-  json,
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  redirect,
-  Scripts,
-  ScrollRestoration,
-  useCatch,
-} from 'remix'
-
-import type { ErrorBoundaryComponent, LinksFunction, LoaderFunction, MetaFunction } from 'remix'
+import type { ErrorBoundaryComponent, LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from "@remix-run/react";
 
 import type { EntryProps, RequestInfo } from '~/types'
 import { enhanceMeta } from '~/utils/meta'
