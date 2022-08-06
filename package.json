@@ -14,7 +14,8 @@
     "deploy:remote": "fly deploy --remote-only",
     "deploy:local": "fly deploy --local-only",
     "deploy": "fly --app lukemcdonald deploy .",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
@@ -46,6 +47,7 @@
     "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.0",
     "postcss": "^8.4.14",
     "postcss-cli": "^10.0.0",
     "prettier": "^2.7.1",
