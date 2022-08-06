@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import type { MenuLink } from '~/types'
 import { Link } from '~/components/link'
 import { Logo } from '~/components/logo'
-import { Nav } from '~/components/navMenu'
+import { Nav } from '~/components/nav'
 
 const menuLinks: MenuLink[] = [
   {

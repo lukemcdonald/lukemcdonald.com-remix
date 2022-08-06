@@ -6,7 +6,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import type { NavMenuProps } from '~/types'
 import { Link } from '~/components/link'
 
-export const NavMenu = ({ as = 'div', children, className, link }: NavMenuProps) => (
+const NavMenu = ({ as = 'div', children, className, link }: NavMenuProps) => (
   <Menu as={as} className={clsx('relative inline-block text-left', className)}>
     <Menu.Button className="inline-flex justify-center rounded-md bg-black bg-opacity-0 px-3 py-2 text-base uppercase tracking-wide text-primary-900 hover:bg-opacity-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
       <span>{link.name}</span>
@@ -49,17 +49,4 @@ export const NavMenu = ({ as = 'div', children, className, link }: NavMenuProps)
   </Menu>
 )
 
-interface NavProps {
-  children: React.ReactNode
-  className?: string
-}
-
-export class Nav extends React.Component<NavProps, {}> {
-  static Menu = NavMenu
-
-  render() {
-    const { children, className } = this.props
-
-    return <nav className={className}>{children}</nav>
-  }
-}
+export default NavMenu
