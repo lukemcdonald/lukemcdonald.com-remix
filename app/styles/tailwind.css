@@ -804,10 +804,6 @@ html:has(button[data-theme='orange']) {
   border-width: 0;
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -941,12 +937,12 @@ html:has(button[data-theme='orange']) {
   height: 1.5rem;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-\[1\.15rem\] {
   height: 1.15rem;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .max-h-screen {
@@ -977,16 +973,16 @@ html:has(button[data-theme='orange']) {
   width: 1.5rem;
 }
 
+.w-\[1\.15rem\] {
+  width: 1.15rem;
+}
+
 .w-5 {
   width: 1.25rem;
 }
 
 .w-44 {
   width: 11rem;
-}
-
-.w-\[1\.15rem\] {
-  width: 1.15rem;
 }
 
 .max-w-0 {
@@ -1083,16 +1079,16 @@ html:has(button[data-theme='orange']) {
   border-radius: 0.125rem;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
 
 .rounded {
   border-radius: 0.25rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
 }
 
 .border-b-2 {
@@ -1209,11 +1205,6 @@ html:has(button[data-theme='orange']) {
   padding-bottom: 0.25rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1222,6 +1213,11 @@ html:has(button[data-theme='orange']) {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .pb-30vw {
@@ -1348,12 +1344,12 @@ html:has(button[data-theme='orange']) {
   opacity: 0.4;
 }
 
-.opacity-0 {
-  opacity: 0;
-}
-
 .opacity-100 {
   opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .mix-blend-lighten {
@@ -1434,12 +1430,12 @@ html:has(button[data-theme='orange']) {
   transition-duration: 75ms;
 }
 
-.ease-out {
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .last\:hidden:last-child {
