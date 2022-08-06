@@ -953,6 +953,10 @@ html:has(button[data-theme='orange']) {
   max-height: 15rem;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -987,6 +991,14 @@ html:has(button[data-theme='orange']) {
 
 .max-w-0 {
   max-width: 0rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
 }
 
 .grow {
@@ -1546,6 +1558,10 @@ html:has(button[data-theme='orange']) {
     max-height: 720px;
   }
 
+  .lg\:min-h-0 {
+    min-height: 0px;
+  }
+
   .lg\:min-h-screen {
     min-height: 100vh;
   }
@@ -1560,6 +1576,10 @@ html:has(button[data-theme='orange']) {
 
   .lg\:max-w-screen-xl {
     max-width: 1280px;
+  }
+
+  .lg\:flex-grow-0 {
+    flex-grow: 0;
   }
 
   .lg\:items-center {
