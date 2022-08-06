@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import { NavLink } from "@remix-run/react";
+import { NavLink } from '@remix-run/react'
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 
-import type { LinkProps } from '~/types'
+import type { NavLinkProps } from '~/types'
 
 export function Link({
   activeClassName,
@@ -12,7 +12,7 @@ export function Link({
   to,
   showExternalIcon,
   ...other
-}: LinkProps) {
+}: NavLinkProps) {
   // This example assumes that any internal link will start with exactly
   // one slash, and that anything else is external.
   const internal = /^\/(?!\/)/.test(to.toString())
@@ -35,7 +35,7 @@ export function Link({
 
   return (
     <a href={to.toString()} className={className} {...other}>
-      {children}{' '}
+      {children}
       {showExternalIcon && <ExternalLinkIcon className="float-right ml-2 h-4 w-4 opacity-40" />}
     </a>
   )

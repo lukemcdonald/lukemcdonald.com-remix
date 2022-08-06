@@ -1,4 +1,4 @@
-import { RemixLinkProps } from '@remix-run/react/components'
+import type { NavLinkProps as RemixNavLinkProps } from '@remix-run/react'
 
 export interface RequestInfo {
   requestInfo: {
@@ -33,7 +33,7 @@ export interface ImageProps {
   style?: any
 }
 
-export interface LinkProps extends RemixLinkProps {
+export interface NavLinkProps extends RemixNavLinkProps {
   inactiveClassName?: string
   activeClassName?: string
   showExternalIcon?: boolean
