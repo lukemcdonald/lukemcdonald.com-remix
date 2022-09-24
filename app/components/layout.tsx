@@ -1,15 +1,14 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
-
 import { Header } from './header'
 import { Image } from './image'
 import { Main } from './main'
 import { ModeSelect } from './mode-select'
 import { defaults as themeSelectDefaults, ThemeSelect } from './theme-select'
-import type { ThemeSelectData } from './theme-select'
+import type { ThemeData } from '~/types'
 
-function getOverlayColor({ mode, theme }: ThemeSelectData) {
+function getOverlayColor({ mode, theme }: ThemeData) {
   if (mode === 'dark') {
     return theme?.label === 'Gray' ? 'bg-primary-900' : 'bg-black'
   }
@@ -17,7 +16,7 @@ function getOverlayColor({ mode, theme }: ThemeSelectData) {
   return ''
 }
 
-const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [mode] = useLocalStorageState('mode', { defaultValue: themeSelectDefaults.mode })
   const [theme] = useLocalStorageState('theme', { defaultValue: themeSelectDefaults.theme })
   const [currentMode, setCurrentMode] = useState(themeSelectDefaults.mode)

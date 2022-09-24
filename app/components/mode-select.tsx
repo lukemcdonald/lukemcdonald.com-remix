@@ -1,15 +1,14 @@
 import useLocalStorageState from 'use-local-storage-state'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
-
-type Mode = 'light' | 'dark'
+import type { ThemeMode } from '~/types'
 
 export function ModeSelect() {
-  const [mode, setMode] = useLocalStorageState<Mode>('mode', {
+  const [mode, setMode] = useLocalStorageState<ThemeMode>('mode', {
     defaultValue: 'light',
   })
 
-  const [currentMode, setCurrentMode] = useState<Mode>('light')
+  const [currentMode, setCurrentMode] = useState<ThemeMode>('light')
 
   useEffect(() => {
     setCurrentMode(mode)

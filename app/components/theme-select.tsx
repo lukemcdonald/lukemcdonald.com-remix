@@ -3,29 +3,24 @@ import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import useLocalStorageState from 'use-local-storage-state'
 import { SwatchIcon } from '@heroicons/react/24/outline'
+import { ThemeColor } from '~/types'
+import type { ThemeData } from '~/types'
 
 export const themeOptions = [
-  { label: 'Gray', colors: { light: '#abab9d', dark: '#3e504f' } },
-  { label: 'Green', colors: { light: '#9cd075', dark: '#15824e' } },
-  { label: 'Blue', colors: { light: '#38bdf8', dark: '#0369a1' } },
-  { label: 'Purple', colors: { light: '#818cf8', dark: '#4338ca' } },
-  { label: 'Yellow', colors: { light: '#fde047', dark: '#facc15' } },
-  { label: 'Orange', colors: { light: '#fb923c', dark: '#ea580c' } },
+  { label: ThemeColor.gray, colors: { light: '#abab9d', dark: '#3e504f' } },
+  { label: ThemeColor.green, colors: { light: '#9cd075', dark: '#15824e' } },
+  { label: ThemeColor.blue, colors: { light: '#38bdf8', dark: '#0369a1' } },
+  { label: ThemeColor.purple, colors: { light: '#818cf8', dark: '#4338ca' } },
+  { label: ThemeColor.yellow, colors: { light: '#fde047', dark: '#facc15' } },
+  { label: ThemeColor.orange, colors: { light: '#fb923c', dark: '#ea580c' } },
 ]
 
-export type Mode = 'light' | 'dark'
-export type ThemeOption = typeof themeOptions[number]
-export type ThemeSelectData = {
-  mode: Mode
-  theme: ThemeOption
-}
-
-export const defaults: ThemeSelectData = {
+export const defaults: ThemeData = {
   mode: 'light',
   theme: themeOptions[0],
 }
 
-function getThemeColor({ mode, theme }: ThemeSelectData) {
+function getThemeColor({ mode, theme }: ThemeData) {
   let color = themeOptions[0].colors.dark
 
   if (theme?.colors) {

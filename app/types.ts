@@ -8,34 +8,35 @@ export interface RequestInfo {
 }
 
 export interface Content {
+  description: string
   draft: boolean
   html: string
   image: string
   imageAlt: string
   markdown: string
-  description: string
   subtitle: string
   title: string
 }
 
 export interface MenuLink {
+  links?: MenuLink[]
   name: string
   to: string
-  links?: MenuLink[]
 }
 
 export interface ImageProps {
-  className?: string
-  src: string
   alt: string
-  widths?: number[]
+  className?: string
   sizes?: string[]
+  src: string
   style?: any
+  widths?: number[]
 }
 
 export interface NavLinkProps extends RemixNavLinkProps {
-  inactiveClassName?: string
   activeClassName?: string
+  className?: string
+  inactiveClassName?: string
   showExternalIcon?: boolean
 }
 
@@ -48,3 +49,23 @@ export interface NavMenuProps {
 
 export type EntryProps = Partial<Omit<Content, 'markdown' | 'draft'>>
 export type EntryHeaderProps = Omit<EntryProps, 'html' | 'image'>
+export type ThemeMode = 'light' | 'dark'
+export enum ThemeColor {
+  blue = 'Blue',
+  gray = 'Gray',
+  green = 'Green',
+  orange = 'Orange',
+  purple = 'Purple',
+  yellow = 'Yellow',
+}
+export interface ThemeOption {
+  colors: {
+    dark: string
+    light: string
+  }
+  label: ThemeColor
+}
+export interface ThemeData {
+  mode: ThemeMode
+  theme: ThemeOption
+}
