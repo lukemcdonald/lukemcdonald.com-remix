@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
 import type { NavMenuProps } from '~/types'
 import { Link } from '~/components/link'

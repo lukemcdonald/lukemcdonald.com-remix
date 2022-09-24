@@ -1,5 +1,5 @@
 import useLocalStorageState from 'use-local-storage-state'
-import { MoonIcon, SunIcon } from '@heroicons/react/solid'
+import { MoonIcon, SunIcon } from '@heroicons/react/20/solid'
 import { useEffect, useState } from 'react'
 
 type Mode = 'light' | 'dark'
