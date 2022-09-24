@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import useLocalStorageState from 'use-local-storage-state'
+import { SwatchIcon } from '@heroicons/react/24/outline'
 
 export const themeOptions = [
   { label: 'Gray', colors: { light: '#abab9d', dark: '#3e504f' } },
@@ -44,9 +45,14 @@ export function ThemeSelect() {
   })
   const [currentMode, setCurrentMode] = useState(defaults.mode)
   const [currentTheme, setCurrentTheme] = useState(defaults.theme)
+  const [open, setOpen] = useState(false)
   const currentThemeData = {
     theme: currentTheme,
     mode: currentMode,
+  }
+
+  function handleButtonToggle() {
+    setOpen(!open)
   }
 
   useEffect(() => {
@@ -60,11 +66,15 @@ export function ThemeSelect() {
   return (
     <Listbox value={theme} onChange={setTheme}>
       <div className="theme-select relative">
-        <Listbox.Button className="py-2 px-2" data-theme={currentTheme.label.toLocaleLowerCase()}>
-          <div
-            className="h-[1.15rem] w-[1.15rem] rounded-full"
+        <Listbox.Button
+          className={clsx('py-2 px-2 transition hover:scale-125', open ? 'scale-125' : '')}
+          onClick={handleButtonToggle}
+          data-theme={currentTheme.label.toLocaleLowerCase()}
+        >
+          <SwatchIcon
+            className="h-6 w-6 text-primary-400"
             style={{
-              backgroundColor: getThemeColor(currentThemeData),
+              color: getThemeColor(currentThemeData),
             }}
           />
         </Listbox.Button>
@@ -75,24 +85,26 @@ export function ThemeSelect() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute max-h-60 w-full overflow-auto outline-none">
-            {themeOptions.map((option) => (
-              <Listbox.Option key={option.label.toLowerCase()} value={option} as={Fragment}>
-                {({ active, selected }) => (
-                  <li className={clsx(`relative select-none`)}>
-                    <button className={`block w-full py-1 px-2`}>
-                      <span
-                        className="inline-block h-4 w-4 rounded-full"
-                        style={{
-                          background: getThemeColor({ ...currentThemeData, theme: option }),
-                        }}
-                      />
-                      <span className="sr-only text-primary-400">{option.label}</span>
-                    </button>
-                  </li>
-                )}
-              </Listbox.Option>
-            ))}
+          <Listbox.Options className="no-scrollbar absolute max-h-60 w-full overflow-auto outline-none">
+            {themeOptions
+              .filter((option) => option.label !== currentThemeData.theme.label)
+              .map((option) => (
+                <Listbox.Option key={option.label.toLowerCase()} value={option} as={Fragment}>
+                  {({ active, selected }) => (
+                    <li className="relative select-none transition hover:scale-125">
+                      <button className="block w-full py-1 px-2" onClick={handleButtonToggle}>
+                        <span
+                          className="inline-block h-4 w-4 rounded-full"
+                          style={{
+                            background: getThemeColor({ ...currentThemeData, theme: option }),
+                          }}
+                        />
+                        <span className="sr-only text-primary-400">{option.label}</span>
+                      </button>
+                    </li>
+                  )}
+                </Listbox.Option>
+              ))}
           </Listbox.Options>
         </Transition>
       </div>

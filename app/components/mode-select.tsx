@@ -1,5 +1,5 @@
 import useLocalStorageState from 'use-local-storage-state'
-import { MoonIcon, SunIcon } from '@heroicons/react/20/solid'
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 
 type Mode = 'light' | 'dark'
@@ -24,7 +24,11 @@ export function ModeSelect() {
   }
 
   return (
-    <button type="button" onClick={handleMode} className="flex items-center py-1 px-1">
+    <button
+      type="button"
+      onClick={handleMode}
+      className="flex items-center py-1 px-1 transition hover:scale-125"
+    >
       {currentMode === 'dark' ? (
         <SunIcon className="h-6 w-6 text-primary-400" />
       ) : (
