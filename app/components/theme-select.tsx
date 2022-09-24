@@ -3,36 +3,51 @@ import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import useLocalStorageState from 'use-local-storage-state'
 
-interface ThemeOption {
-  label: string
-  classes: {
-    light: string
-    dark: string
-  }
-}
-
-const options = [
-  { label: 'Green', classes: { light: '#9cd075', dark: '#15824e' } },
-  { label: 'Blue', classes: { light: '#38bdf8', dark: '#0369a1' } },
-  { label: 'Purple', classes: { light: '#818cf8', dark: '#4338ca' } },
-  { label: 'Yellow', classes: { light: '#fde047', dark: '#facc15' } },
-  { label: 'Orange', classes: { light: '#fb923c', dark: '#ea580c' } },
-  { label: 'Gray', classes: { light: '#a8a29e', dark: '#44403c' } },
+export const themeOptions = [
+  { label: 'Gray', colors: { light: '#abab9d', dark: '#3e504f' } },
+  { label: 'Green', colors: { light: '#9cd075', dark: '#15824e' } },
+  { label: 'Blue', colors: { light: '#38bdf8', dark: '#0369a1' } },
+  { label: 'Purple', colors: { light: '#818cf8', dark: '#4338ca' } },
+  { label: 'Yellow', colors: { light: '#fde047', dark: '#facc15' } },
+  { label: 'Orange', colors: { light: '#fb923c', dark: '#ea580c' } },
 ]
 
-type Mode = 'light' | 'dark'
+export type Mode = 'light' | 'dark'
+export type ThemeOption = typeof themeOptions[number]
+export type ThemeSelectData = {
+  mode: Mode
+  theme: ThemeOption
+}
+
+export const defaults: ThemeSelectData = {
+  mode: 'light',
+  theme: themeOptions[0],
+}
+
+function getThemeColor({ mode, theme }: ThemeSelectData) {
+  let color = themeOptions[0].colors.dark
+
+  if (theme?.colors) {
+    const { light, dark } = theme.colors
+    color = mode === 'dark' ? light : dark
+  }
+
+  return color
+}
 
 export function ThemeSelect() {
+  const [mode] = useLocalStorageState('mode', {
+    defaultValue: defaults.mode,
+  })
   const [theme, setTheme] = useLocalStorageState('theme', {
-    ssr: true,
-    defaultValue: options[0],
+    defaultValue: defaults.theme,
   })
-  const [mode] = useLocalStorageState<Mode>('mode', {
-    defaultValue: 'light',
-  })
-
-  const [currentTheme, setCurrentTheme] = useState<ThemeOption>(options[0])
-  const [currentMode, setCurrentMode] = useState<Mode>('light')
+  const [currentMode, setCurrentMode] = useState(defaults.mode)
+  const [currentTheme, setCurrentTheme] = useState(defaults.theme)
+  const currentThemeData = {
+    theme: currentTheme,
+    mode: currentMode,
+  }
 
   useEffect(() => {
     setCurrentTheme(theme)
@@ -42,39 +57,15 @@ export function ThemeSelect() {
     setCurrentMode(mode)
   }, [mode])
 
-  function getThemeColor(option: ThemeOption) {
-    let color = options[0].classes.dark
-
-    if (option?.classes) {
-      const { light, dark } = option.classes
-      color = currentMode === 'dark' ? light : dark
-    }
-
-    return color
-  }
-
-  // useEffect(() => {
-  //   const currentThemeIndex = options.findIndex((object) => {
-  //     return object.label === currentTheme.label
-  //   })
-
-  //   const interval = setInterval(() => {
-  //     if (currentThemeIndex === options.length - 1) {
-  //       setCurrentTheme(options[0])
-  //     } else {
-  //       setCurrentTheme(options[currentThemeIndex + 1])
-  //     }
-  //   }, 2000)
-  //   return () => clearInterval(interval)
-  // }, [theme, currentTheme])
-
   return (
     <Listbox value={theme} onChange={setTheme}>
       <div className="theme-select relative">
         <Listbox.Button className="py-2 px-2" data-theme={currentTheme.label.toLocaleLowerCase()}>
           <div
             className="h-[1.15rem] w-[1.15rem] rounded-full"
-            style={{ backgroundColor: getThemeColor(currentTheme) }}
+            style={{
+              backgroundColor: getThemeColor(currentThemeData),
+            }}
           />
         </Listbox.Button>
 
@@ -85,14 +76,16 @@ export function ThemeSelect() {
           leaveTo="opacity-0"
         >
           <Listbox.Options className="absolute max-h-60 w-full overflow-auto outline-none">
-            {options.map((option) => (
+            {themeOptions.map((option) => (
               <Listbox.Option key={option.label.toLowerCase()} value={option} as={Fragment}>
                 {({ active, selected }) => (
                   <li className={clsx(`relative select-none`)}>
                     <button className={`block w-full py-1 px-2`}>
                       <span
                         className="inline-block h-4 w-4 rounded-full"
-                        style={{ background: getThemeColor(option) }}
+                        style={{
+                          background: getThemeColor({ ...currentThemeData, theme: option }),
+                        }}
                       />
                       <span className="sr-only text-primary-400">{option.label}</span>
                     </button>

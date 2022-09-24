@@ -1,14 +1,14 @@
 :root {
-  --color-primary-50: #ffffff;
-  --color-primary-100: #fafdf9;
-  --color-primary-200: #dbeecd;
-  --color-primary-300: #bcdfa1;
-  --color-primary-400: #9cd075;
-  --color-primary-500: #7dc149;
-  --color-primary-600: #49a24c;
-  --color-primary-700: #15824e;
-  --color-primary-800: #175c35;
-  --color-primary-900: #18351c;
+  --color-primary-50: #fafaf9;
+  --color-primary-100: #f5f5f4;
+  --color-primary-200: #e7e5e4;
+  --color-primary-300: #d6d3d1;
+  --color-primary-400: #c6c6bd;
+  --color-primary-500: #abab9d;
+  --color-primary-600: #7c8169;
+  --color-primary-700: #3e504f;
+  --color-primary-800: #3a401f;
+  --color-primary-900: #122023;
   @apply transition-colors;
 }
 
@@ -51,17 +51,17 @@ html:has(button[data-theme='yellow']) {
   --color-primary-900: #45260b;
 }
 
-html:has(button[data-theme='gray']) {
-  --color-primary-50: #fafaf9;
-  --color-primary-100: #f5f5f4;
-  --color-primary-200: #e7e5e4;
-  --color-primary-300: #d6d3d1;
-  --color-primary-400: #a8a29e;
-  --color-primary-500: #78716c;
-  --color-primary-600: #57534e;
-  --color-primary-700: #44403c;
-  --color-primary-800: #292524;
-  --color-primary-900: #0e0d0c;
+html:has(button[data-theme='green']) {
+  --color-primary-50: #ffffff;
+  --color-primary-100: #fafdf9;
+  --color-primary-200: #dbeecd;
+  --color-primary-300: #bcdfa1;
+  --color-primary-400: #9cd075;
+  --color-primary-500: #7dc149;
+  --color-primary-600: #49a24c;
+  --color-primary-700: #15824e;
+  --color-primary-800: #175c35;
+  --color-primary-900: #18351c;
 }
 
 html:has(button[data-theme='orange']) {

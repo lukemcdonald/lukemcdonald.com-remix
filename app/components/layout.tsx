@@ -2,28 +2,36 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 
-import { Header } from '~/components/header'
-import { Image } from '~/components/image'
-import { Main } from '~/components/main'
+import { Header } from './header'
+import { Image } from './image'
+import { Main } from './main'
 import { ModeSelect } from './mode-select'
-import { ThemeSelect } from './theme-select'
+import { defaults as themeSelectDefaults, ThemeSelect } from './theme-select'
+import type { ThemeSelectData } from './theme-select'
 
-type Mode = 'light' | 'dark'
+function getOverlayColor({ mode, theme }: ThemeSelectData) {
+  if (mode === 'dark') {
+    return theme?.label === 'Gray' ? 'bg-primary-900' : 'bg-black'
+  }
 
-export function Layout({ children }: React.PropsWithChildren<{}>) {
-  const [mode] = useLocalStorageState<Mode>('mode', {
-    ssr: true,
-    defaultValue: 'light',
-  })
+  return ''
+}
 
-  const [currentMode, setCurrentMode] = useState<Mode>('light')
+const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const [mode] = useLocalStorageState('mode', { defaultValue: themeSelectDefaults.mode })
+  const [theme] = useLocalStorageState('theme', { defaultValue: themeSelectDefaults.theme })
+  const [currentMode, setCurrentMode] = useState(themeSelectDefaults.mode)
+  const overlayColorArgs = {
+    mode: currentMode,
+    theme,
+  }
 
   useEffect(() => {
     setCurrentMode(mode)
   }, [mode])
 
   return (
-    <div className={clsx('lg:grid', currentMode === 'dark' ? 'bg-black' : '')}>
+    <div className={clsx('lg:grid', getOverlayColor(overlayColorArgs))}>
       <Image
         className={clsx(
           'absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover blur-sm grayscale lg:block',
@@ -57,3 +65,5 @@ export function Layout({ children }: React.PropsWithChildren<{}>) {
     </div>
   )
 }
+
+export { Layout }
