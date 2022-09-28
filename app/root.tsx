@@ -29,7 +29,7 @@ export const meta: MetaFunction = ({ data }) => {
   const meta = {
     image: `${requestInfo?.origin}/images/seo-banner.png`,
     'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
-    'theme-color': '#7dc149',
+    'theme-color': '#122023',
   }
 
   return enhanceMeta(meta, {
@@ -58,7 +58,7 @@ export const links: LinksFunction = () => [
   {
     rel: 'mask-icon',
     href: '/favicons/favicon.svg',
-    color: '#15824e',
+    color: '#122023',
   },
 ]
 
