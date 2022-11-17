@@ -34,7 +34,12 @@ export async function getContent({
 
     const html = marked(body)
 
-    return { ...attributes, html, markdown: body, filename }
+    return {
+      ...attributes,
+      filename,
+      html,
+      markdown: body,
+    }
   } catch (error) {
     console.error(error)
     throw pageNotFound(filename)
