@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 
 import type { ThemeData } from '~/types'
@@ -14,7 +14,7 @@ export const THEMES = [
 ]
 
 export const DEFAULT_THEME_DATA: ThemeData = {
-  mode: 'light',
+  mode: 'system',
   theme: THEMES[0],
 }
 
@@ -30,21 +30,28 @@ export function getThemeColor({ mode, theme }: ThemeData) {
 }
 
 function useTheme() {
-  const [mode, setMode] = useLocalStorageState('mode', { defaultValue: DEFAULT_THEME_DATA.mode })
+  const [mode, setMode] = useLocalStorageState('mode', {
+    defaultValue: DEFAULT_THEME_DATA.mode,
+  })
   const [theme, setTheme] = useLocalStorageState('theme', {
     defaultValue: DEFAULT_THEME_DATA.theme,
   })
   const [data, setData] = useState<ThemeData>(DEFAULT_THEME_DATA)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (mode === 'system') {
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+      setData((current) => ({ ...current, mode: isDarkMode ? 'dark' : 'light' }))
+    } else {
+      setData((current) => ({ ...current, mode }))
+    }
+  }, [mode])
+
+  useLayoutEffect(() => {
     setData((current) => ({ ...current, theme }))
   }, [theme])
 
-  useEffect(() => {
-    setData((current) => ({ ...current, mode }))
-  }, [mode])
-
-  return { data, setData, setMode, setTheme }
+  return { data, setTheme, setMode }
 }
 
 export { useTheme }

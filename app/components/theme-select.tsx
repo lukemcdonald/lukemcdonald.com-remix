@@ -3,6 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { SwatchIcon } from '@heroicons/react/24/outline'
 import { getThemeColor, THEMES, useTheme } from '~/hooks/use-theme'
+import type { ThemeOption } from '~/types'
 
 export function ThemeSelect() {
   const [open, setOpen] = useState(false)
@@ -12,8 +13,12 @@ export function ThemeSelect() {
     setOpen(!open)
   }
 
+  function handleListBoxChange(value: ThemeOption) {
+    setTheme(value)
+  }
+
   return (
-    <Listbox value={data.theme} onChange={setTheme}>
+    <Listbox value={data.theme} onChange={handleListBoxChange}>
       <div className="theme-select relative">
         <Listbox.Button
           className={clsx('py-2 px-2 transition hover:scale-125', open ? 'scale-125' : '')}
