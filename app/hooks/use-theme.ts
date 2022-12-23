@@ -35,21 +35,13 @@ function useTheme() {
     defaultValue: DEFAULT_THEME_DATA.theme,
   })
   const [data, setData] = useState<ThemeData>(DEFAULT_THEME_DATA)
-  // const [currentMode, setCurrentMode] = useState(defaults.mode)
-  // const [currentTheme, setCurrentTheme] = useState(defaults.theme)
-  // const data = {
-  //   theme: currentTheme,
-  //   mode: currentMode,
-  // }
 
   useEffect(() => {
     setData((current) => ({ ...current, theme }))
-    // setCurrentTheme(theme)
   }, [theme])
 
   useEffect(() => {
     setData((current) => ({ ...current, mode }))
-    // setCurrentMode(mode)
   }, [mode])
 
   return { data, setData, setMode, setTheme }
