@@ -1,40 +1,37 @@
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
-import useLocalStorageState from 'use-local-storage-state'
+
+import type { ThemeData } from '~/types'
 import { Header } from './header'
 import { Image } from './image'
 import { Main } from './main'
 import { ModeSelect } from './mode-select'
-import { defaults as themeSelectDefaults, ThemeSelect } from './theme-select'
-import type { ThemeData } from '~/types'
+import { ThemeSelect } from './theme-select'
+import { useTheme } from '~/hooks/use-theme'
 
 function getOverlayColor({ mode, theme }: ThemeData) {
-  if (mode === 'dark') {
-    return theme?.label === 'Gray' ? 'bg-primary-900' : 'bg-black'
+  if (mode !== 'dark') {
+    return 'bg-primary-50'
   }
 
-  return ''
+  const themeKey = theme?.label.toLowerCase()
+
+  switch (themeKey) {
+    case 'gray':
+      return 'bg-primary-900'
+    default:
+      return 'bg-black'
+  }
 }
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [mode] = useLocalStorageState('mode', { defaultValue: themeSelectDefaults.mode })
-  const [theme] = useLocalStorageState('theme', { defaultValue: themeSelectDefaults.theme })
-  const [currentMode, setCurrentMode] = useState(themeSelectDefaults.mode)
-  const overlayColorArgs = {
-    mode: currentMode,
-    theme,
-  }
-
-  useEffect(() => {
-    setCurrentMode(mode)
-  }, [mode])
+  const { data } = useTheme()
 
   return (
-    <div className={clsx('lg:grid', getOverlayColor(overlayColorArgs))}>
+    <div className={clsx('lg:grid', getOverlayColor(data))}>
       <Image
         className={clsx(
           'absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover blur-sm grayscale lg:block',
-          currentMode === 'dark' ? 'opacity-30 mix-blend-hard-light' : 'opacity-20'
+          data.mode === 'dark' ? 'opacity-30 mix-blend-hard-light' : 'opacity-20'
         )}
         src="https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/landscape-tree-fog_jz6tjg.jpg"
         alt="Tree fog background"

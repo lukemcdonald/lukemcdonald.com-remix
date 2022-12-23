@@ -1123,6 +1123,14 @@ html:has(button[data-theme='orange']) {
   background-color: var(--color-primary-200);
 }
 
+.bg-primary-300 {
+  background-color: var(--color-primary-300);
+}
+
+.bg-primary-50 {
+  background-color: var(--color-primary-50);
+}
+
 .bg-opacity-0 {
   --tw-bg-opacity: 0;
 }
