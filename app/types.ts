@@ -49,7 +49,7 @@ export interface NavMenuProps {
 
 export type EntryProps = Partial<Omit<Content, 'markdown' | 'draft'>>
 export type EntryHeaderProps = Omit<EntryProps, 'html' | 'image'>
-export type ThemeMode = 'light' | 'dark' | 'system'
+
 export enum ThemeColor {
   blue = 'Blue',
   gray = 'Gray',
@@ -57,6 +57,10 @@ export enum ThemeColor {
   orange = 'Orange',
   purple = 'Purple',
   yellow = 'Yellow',
+}
+export interface ModeOption {
+  label: 'dark' | 'light' | 'system'
+  value: 'dark' | 'light'
 }
 export interface ThemeOption {
   colors: {
@@ -66,6 +70,6 @@ export interface ThemeOption {
   label: ThemeColor
 }
 export interface ThemeData {
-  mode: ThemeMode
+  mode: ModeOption
   theme: ThemeOption
 }

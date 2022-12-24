@@ -1,15 +1,16 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { Listbox, Transition } from '@headlessui/react'
 import { MoonIcon, SunIcon, ComputerDesktopIcon as SystemIcon } from '@heroicons/react/24/outline'
 
-import { useTheme, MODES, THEMES } from '~/hooks/use-theme'
-import type { ThemeMode } from '~/types'
+import type { ThemeMode } from '~/hooks/use-theme'
+import { useTheme, MODES } from '~/hooks/use-theme'
 
 type ModeIconProps = React.SVGProps<SVGSVGElement>
+type ModeIcon = (props: ModeIconProps) => JSX.Element
 
 function getModeIcon(mode: ThemeMode) {
-  switch (mode) {
+  switch (mode.label) {
     case 'dark':
       return {
         icon: (props: ModeIconProps) => <MoonIcon {...props} />,
@@ -18,40 +19,25 @@ function getModeIcon(mode: ThemeMode) {
       return {
         icon: (props: ModeIconProps) => <SunIcon {...props} />,
       }
-    case 'system':
+    default:
       return {
         icon: (props: ModeIconProps) => <SystemIcon {...props} />,
       }
   }
 }
 
-function getListboxClass(mode: ThemeMode) {
-  switch (mode) {
-    case 'dark':
-      return 'bg-primary-400'
-    case 'light':
-      return 'bg-primary-700'
-    case 'system':
-      return 'bg-primary-400'
-  }
-}
-
-function getSelectedClass(mode: ThemeMode) {
-  switch (mode) {
-    case 'dark':
-      return 'bg-primary-500'
-    case 'light':
-      return 'bg-primary-800'
-    case 'system':
-      return 'bg-primary-500'
-  }
-}
-
 export function ModeSelect() {
   const { data, setMode } = useTheme()
   const [open, setOpen] = useState(false)
-  const [selectedMode, setSelectedMode] = useState(data.mode)
-  const { icon: Icon } = getModeIcon(selectedMode)
+  const [selectedMode, setSelectedMode] = useState<ThemeMode>(data.mode)
+  const [{ icon: SelectedIcon }, setSelectedIcon] = useState<Record<'icon', ModeIcon>>(
+    getModeIcon(data.mode)
+  )
+
+  useEffect(() => {
+    setSelectedMode(data.mode)
+    setSelectedIcon(getModeIcon(data.mode))
+  }, [data])
 
   function handleButtonToggle() {
     setOpen(!open)
@@ -60,23 +46,20 @@ export function ModeSelect() {
   function handleModeChange(value: ThemeMode) {
     setMode(value)
     setSelectedMode(value)
+    setSelectedIcon(getModeIcon(value))
   }
 
   return (
     <Listbox value={selectedMode} onChange={handleModeChange}>
       <div className="theme-select relative">
-        <Listbox.Button
-          className="py-2 px-2 transition"
-          data-theme={selectedMode}
-          onClick={handleButtonToggle}
-        >
-          <Icon
+        <Listbox.Button className="py-2 px-2 transition" onClick={handleButtonToggle}>
+          <SelectedIcon
             className={clsx(
               'h-6 w-6',
-              data.mode === 'light' ? 'text-primary-700' : 'text-primary-400'
+              selectedMode.value === 'light' ? 'text-primary-700' : 'text-primary-400'
             )}
           />
-          <span className="sr-only capitalize text-primary-400">{selectedMode}</span>
+          <span className="sr-only capitalize text-primary-400">{selectedMode.label}</span>
         </Listbox.Button>
 
         <Transition
@@ -85,40 +68,33 @@ export function ModeSelect() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options
-            className={clsx(
-              'no-scrollbar absolute right-0 w-28 overflow-auto rounded-lg py-1 outline-none',
-              getListboxClass(data.mode)
-            )}
-          >
-            {MODES.map((option) => (
-              <Listbox.Option key={option} value={option} as={Fragment}>
-                {({ active, selected }) => {
-                  const { icon: OptionIcon } = getModeIcon(option)
-
-                  return (
-                    <li
-                      className={clsx(
-                        'relative select-none transition',
-                        active ? getSelectedClass(selectedMode) : '',
-                        selected ? getSelectedClass(selectedMode) : ''
-                      )}
-                    >
-                      <button
+          <Listbox.Options className="no-scrollbar absolute right-0 w-28 overflow-auto rounded-lg bg-primary-300 py-1 outline-none">
+            {MODES.map((option) => {
+              return (
+                <Listbox.Option as={Fragment} key={option.label} value={option}>
+                  {({ active, selected }) => {
+                    const { icon: OptionIcon } = getModeIcon(option)
+                    return (
+                      <li
                         className={clsx(
-                          'flex w-full items-center gap-2 py-2 px-3',
-                          data.mode === 'light' ? 'invert' : ''
+                          'relative select-none transition',
+                          active && !selected ? 'opacity-60' : 'opacity-100',
+                          selected ? 'font-bold' : 'font-normal'
                         )}
-                        onClick={handleButtonToggle}
                       >
-                        <OptionIcon className="h-5 w-5" />
-                        <span className="text-sm font-semibold capitalize">{option}</span>
-                      </button>
-                    </li>
-                  )
-                }}
-              </Listbox.Option>
-            ))}
+                        <button
+                          className="flex w-full items-center gap-2 py-2 px-3"
+                          onClick={handleButtonToggle}
+                        >
+                          <OptionIcon className="h-5 w-5" />
+                          <span className="text-sm capitalize">{option.label}</span>
+                        </button>
+                      </li>
+                    )
+                  }}
+                </Listbox.Option>
+              )
+            })}
           </Listbox.Options>
         </Transition>
       </div>
