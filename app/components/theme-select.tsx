@@ -13,24 +13,19 @@ export function ThemeSelect() {
     setOpen(!open)
   }
 
-  function handleListBoxChange(value: ThemeOption) {
+  function handleThemeChange(value: ThemeOption) {
     setTheme(value)
   }
 
   return (
-    <Listbox value={data.theme} onChange={handleListBoxChange}>
+    <Listbox value={data.theme} onChange={handleThemeChange}>
       <div className="theme-select relative">
         <Listbox.Button
-          className={clsx('py-2 px-2 transition hover:scale-125', open ? 'scale-125' : '')}
-          onClick={handleButtonToggle}
+          className="py-2 px-2 transition"
           data-theme={data.theme.label.toLocaleLowerCase()}
+          onClick={handleButtonToggle}
         >
-          <SwatchIcon
-            className="h-6 w-6 text-primary-400"
-            style={{
-              color: getThemeColor(data),
-            }}
-          />
+          <SwatchIcon className="h-6 w-6 text-primary-400" style={{ color: getThemeColor(data) }} />
         </Listbox.Button>
 
         <Transition
@@ -41,19 +36,21 @@ export function ThemeSelect() {
         >
           <Listbox.Options className="no-scrollbar absolute max-h-60 w-full overflow-auto outline-none">
             {THEMES.filter((option) => option.label !== data.theme.label).map((option) => (
-              <Listbox.Option key={option.label.toLowerCase()} value={option} as={Fragment}>
+              <Listbox.Option
+                className="relative select-none transition hover:scale-125"
+                key={option.label.toLowerCase()}
+                value={option}
+              >
                 {({ active, selected }) => (
-                  <li className="relative select-none transition hover:scale-125">
-                    <button className="block w-full py-1 px-2" onClick={handleButtonToggle}>
-                      <span
-                        className="inline-block h-4 w-4 rounded-full"
-                        style={{
-                          background: getThemeColor({ ...data, theme: option }),
-                        }}
-                      />
-                      <span className="sr-only text-primary-400">{option.label}</span>
-                    </button>
-                  </li>
+                  <button className="block w-full py-1 px-2" onClick={handleButtonToggle}>
+                    <span
+                      className="inline-block h-4 w-4 rounded-full"
+                      style={{
+                        background: getThemeColor({ ...data, theme: option }),
+                      }}
+                    />
+                    <span className="sr-only text-primary-400">{option.label}</span>
+                  </button>
                 )}
               </Listbox.Option>
             ))}

@@ -4,6 +4,8 @@ import useLocalStorageState from 'use-local-storage-state'
 import type { ThemeData } from '~/types'
 import { ThemeColor } from '~/types'
 
+export const MODES = ['light', 'dark', 'system'] as const
+
 export const THEMES = [
   { label: ThemeColor.gray, colors: { light: '#abab9d', dark: '#3e504f' } },
   { label: ThemeColor.green, colors: { light: '#9cd075', dark: '#15824e' } },
