@@ -51,7 +51,7 @@ export function ModeSelect() {
 
   return (
     <Listbox value={selectedMode} onChange={handleModeChange}>
-      <div className="theme-select relative">
+      <div className="mode-select relative" data-mode={selectedMode.label}>
         <Listbox.Button className="py-2 px-2 transition" onClick={handleButtonToggle}>
           <SelectedIcon
             className={clsx(

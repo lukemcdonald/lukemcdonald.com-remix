@@ -549,7 +549,7 @@ video {
   transition-duration: 150ms;
 }
 
-html:has(button[data-theme='blue']) {
+html:has(div[data-theme='blue']) {
   --color-primary-50: #f0f9ff;
   --color-primary-100: #e0f2fe;
   --color-primary-200: #bae6fd;
@@ -562,7 +562,7 @@ html:has(button[data-theme='blue']) {
   --color-primary-900: #072b40;
 }
 
-html:has(button[data-theme='purple']) {
+html:has(div[data-theme='purple']) {
   --color-primary-50: #eef2ff;
   --color-primary-100: #e0e7ff;
   --color-primary-200: #c7d2fe;
@@ -575,7 +575,7 @@ html:has(button[data-theme='purple']) {
   --color-primary-900: #1c1a49;
 }
 
-html:has(button[data-theme='yellow']) {
+html:has(div[data-theme='yellow']) {
   --color-primary-50: #fefce8;
   --color-primary-100: #fef9c3;
   --color-primary-200: #fef08a;
@@ -588,7 +588,7 @@ html:has(button[data-theme='yellow']) {
   --color-primary-900: #45260b;
 }
 
-html:has(button[data-theme='green']) {
+html:has(div[data-theme='green']) {
   --color-primary-50: #ffffff;
   --color-primary-100: #fafdf9;
   --color-primary-200: #dbeecd;
@@ -601,7 +601,7 @@ html:has(button[data-theme='green']) {
   --color-primary-900: #18351c;
 }
 
-html:has(button[data-theme='orange']) {
+html:has(div[data-theme='orange']) {
   --color-primary-50: #fff7ed;
   --color-primary-100: #ffedd5;
   --color-primary-200: #fed7aa;
