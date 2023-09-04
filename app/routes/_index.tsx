@@ -12,8 +12,9 @@ interface LoaderData {
   page: Content
 }
 
-export const meta: V2_MetaFunction<typeof loader> = ({ parentsData }) => {
-  const requestInfo = (parentsData.root as RequestInfo | undefined)?.requestInfo
+export const meta: V2_MetaFunction<typeof loader> = ({ matches }) => {
+  const parentsData = matches.flatMap((match: Record<string, any>) => match.data)
+  const parentRequest = parentsData.find((data) => data.requestInfo) satisfies RequestInfo
 
   const meta = [
     {
@@ -27,8 +28,8 @@ export const meta: V2_MetaFunction<typeof loader> = ({ parentsData }) => {
   ]
 
   return enhanceMeta(meta, {
-    baseUrl: requestInfo?.origin,
-    pathname: requestInfo?.pathname,
+    origin: parentRequest.requestInfo?.origin,
+    pathname: parentRequest.requestInfo?.pathname,
   })
 }
 
