@@ -1,4 +1,4 @@
-import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderFunction, V2_MetaFunction } from '@remix-run/node'
 import { json, redirect } from '@remix-run/node'
 import {
   Links,
@@ -19,14 +19,23 @@ import { getErrorMessage, getRequestInfo } from '~/utils/misc'
 
 import styles from '~/styles/tailwind.css'
 
-export const meta: MetaFunction = ({ data }) => {
+export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
   const requestInfo = (data as RequestInfo | undefined)?.requestInfo
 
-  const meta = {
-    image: `${requestInfo?.origin}/images/seo-banner.png`,
-    'google-site-verification': '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
-    'theme-color': '#122023',
-  }
+  const meta = [
+    {
+      property: 'google-site-verfication',
+      content: '4jMDBbKyVQPMqqE3YYqw2vabnA3CR_uU9l2sOtRRmjM',
+    },
+    {
+      property: 'theme-color',
+      content: '#122023',
+    },
+    {
+      property: 'image',
+      content: `${requestInfo?.origin}/images/seo-banner.png`,
+    },
+  ]
 
   return enhanceMeta(meta, {
     baseUrl: requestInfo?.origin,
@@ -35,7 +44,10 @@ export const meta: MetaFunction = ({ data }) => {
 }
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: styles },
+  {
+    rel: 'stylesheet',
+    href: styles,
+  },
   {
     rel: 'apple-touch-icon',
     sizes: '180x180',
@@ -122,7 +134,7 @@ export function ErrorBoundary() {
   const error = useRouteError()
 
   const entryData: EntryProps = {
-    title: 'Error!',
+    title: 'Error',
     description: `Unknown error.`,
     html: '',
     image:
@@ -169,7 +181,7 @@ export function ErrorBoundary() {
   if (error instanceof Error) {
     const entryErrorData = {
       ...entryData,
-      title: 'Error!',
+      title: 'Error',
       description:
         'There was an uncaught exception in your application. Check the browser or server console to inspect the error.',
       html: buildErrorHtml(getErrorMessage(error)),

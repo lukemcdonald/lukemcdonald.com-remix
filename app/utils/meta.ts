@@ -2,71 +2,71 @@
 
 export type Metadata = Record<string, any>
 
-function clearMeta(meta: Record<string, string>): Record<string, string> {
-  const entries = Object.entries(meta).filter(
-    ([_, value]) => typeof value !== 'undefined' && value.trim() !== ''
-  )
-
-  return Object.fromEntries(entries)
-}
-
-export function deriveMetaFromMetadata(metadata: Metadata): Record<string, string> {
-  return clearMeta({
-    title: metadata.title,
-    description: metadata.description,
-    image: metadata.image,
-    author: metadata.author,
-    keywords: metadata.tags?.join(', '),
+function cleanMeta(meta: Array<Metadata>): Array<Metadata> {
+  return meta.filter((entry) => {
+    const value = entry.content ?? entry.title ?? ''
+    return value && value.trim() !== ''
   })
 }
 
+export function deriveMetaFromMetadata(metadata: Metadata): Array<Metadata> {
+  return cleanMeta([
+    { name: 'description', content: metadata.description },
+    { property: 'author', content: metadata.author },
+    { property: 'image', content: metadata.image },
+    { property: 'keywords', content: metadata.tags?.join(', ') },
+    { title: metadata.title },
+  ])
+}
+
 interface EnhanceMetaOptions {
-  siteName: string
-  baseUrl: string
-  pathname: string
   author: string
-  type: string
+  origin: string
+  pathname: string
+  siteName: string
   twitterCard: string
   twitterSite: string
+  type: string
 }
 
 export function createMetaEnhancer(defaultOptions: Omit<EnhanceMetaOptions, 'pathname'>) {
-  return (
-    meta: Record<string, string>,
-    options: Partial<EnhanceMetaOptions> = {}
-  ): Record<string, string> => {
-    const { siteName, baseUrl, pathname, author, type, twitterCard, twitterSite } = {
-      ...defaultOptions,
-      ...options,
-    }
+  return (meta: Array<Metadata>, options: Partial<EnhanceMetaOptions> = {}): Array<Metadata> => {
+    const allOptions = { ...defaultOptions, ...options }
+    const { author, origin, pathname, siteName, twitterCard, twitterSite, type } = allOptions
 
-    const title = meta.title ? `${meta.title} — ${siteName}` : siteName
-    const url = pathname === '/' ? baseUrl : `${baseUrl}${pathname}`
+    const metaAuthor = meta.find((entry) => entry.property === 'author')?.content || ''
+    const metaDescription = meta.find((entry) => entry.name === 'description')?.content || ''
+    const metaImage = meta.find((entry) => entry.property === 'image')?.content || ''
+    const metaTitle = meta.find((entry) => entry.title)?.title || ''
 
-    return clearMeta({
-      ...meta,
-      title,
-      author: meta.author ?? author,
-      'og:title': title,
-      'og:description': meta.description,
-      'og:image': meta.image,
-      'og:type': type,
-      'og:site_name': siteName,
-      'og:url': url,
-      'twitter:card': twitterCard,
-      'twitter:site': twitterSite,
-      'twitter:title': title,
-      'twitter:description': meta.description,
-      'twitter:image': meta.image,
-    })
+    const title = metaTitle ? `${metaTitle} — ${siteName}` : siteName
+    const url = pathname === '/' ? origin : `${origin}${pathname}`
+
+    return cleanMeta([
+      { title: title },
+      { property: 'author', content: metaAuthor ?? author },
+
+      { property: 'og:description', content: metaDescription },
+      { property: 'og:image', content: metaImage },
+      { property: 'og:site_name', content: siteName },
+      { property: 'og:title', content: title },
+      { property: 'og:type', content: type },
+      { property: 'og:url', content: url },
+
+      { property: 'twitter:card', content: twitterCard },
+      { property: 'twitter:description', content: metaDescription },
+      { property: 'twitter:image', content: metaImage },
+      { property: 'twitter:site', content: twitterSite },
+      { property: 'twitter:title', content: title },
+    ])
   }
 }
 
 export const enhanceMeta = createMetaEnhancer({
-  siteName: 'Luke McDonald',
-  baseUrl: 'https://lukemcdonald.com',
   author: 'Luke McDonald',
-  type: 'website',
+  origin: 'https://lukemcdonald.com',
+  siteName: 'Luke McDonald',
   twitterCard: 'summary',
   twitterSite: '@thelukemcdonald',
+  type: 'website',
 })

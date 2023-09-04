@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useState } from 'react'
-import clsx from 'clsx'
 import { Listbox, Transition } from '@headlessui/react'
 import { MoonIcon, SunIcon, ComputerDesktopIcon as SystemIcon } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
+import { Fragment, useEffect, useState } from 'react'
 
 import type { ThemeMode } from '~/hooks/use-theme'
-import { useTheme, MODES } from '~/hooks/use-theme'
+import { MODES, useTheme } from '~/hooks/use-theme'
 
-type ModeIconProps = React.SVGProps<SVGSVGElement>
+type ModeIconProps = React.RefAttributes<SVGSVGElement> & { className?: string }
 type ModeIcon = (props: ModeIconProps) => JSX.Element
 
 function getModeIcon(mode: ThemeMode) {
