@@ -1,9 +1,4 @@
-import type {
-  ErrorBoundaryComponent,
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from '@remix-run/node'
+import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node'
 import { json, redirect } from '@remix-run/node'
 import {
   Links,
@@ -12,14 +7,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
+  isRouteErrorResponse,
+  useRouteError,
 } from '@remix-run/react'
 
-import type { EntryProps, RequestInfo } from '~/types'
-import { enhanceMeta } from '~/utils/meta'
-import { getRequestInfo, getErrorMessage } from '~/utils/misc'
 import { Entry } from '~/components/entry'
 import { Layout } from '~/components/layout'
+import type { EntryProps, RequestInfo } from '~/types'
+import { enhanceMeta } from '~/utils/meta'
+import { getErrorMessage, getRequestInfo } from '~/utils/misc'
 
 import styles from '~/styles/tailwind.css'
 
@@ -122,64 +118,76 @@ export default function App() {
   )
 }
 
-export function CatchBoundary() {
-  let caught = useCatch()
+export function ErrorBoundary() {
+  const error = useRouteError()
 
-  let message
-  switch (caught.status) {
-    case 401:
-      message = `Oops! Looks like you tried to visit a page that you do not have access to.`
-      break
-    case 404:
-      message = `Oops! Looks like you tried to visit a page that does not exist.`
-      break
-    default:
-      throw new Error(caught.data || caught.statusText)
+  const entryData: EntryProps = {
+    title: 'Error!',
+    description: `Unknown error.`,
+    html: '',
+    image:
+      'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
+    imageAlt: 'Little Carly coding.',
+  }
+
+  function buildErrorHtml(errorMessage: string) {
+    if (!errorMessage) {
+      return ''
+    }
+
+    return `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${errorMessage}</span></pre>`
+  }
+
+  if (isRouteErrorResponse(error)) {
+    const entryErrorData = {
+      ...entryData,
+      title: error.status.toString(),
+      subtitle: error.statusText,
+      html: buildErrorHtml(error.data),
+    }
+
+    switch (error.status) {
+      case 401:
+        entryErrorData.description = `Oops! Looks like you tried to visit a page that you do not have access to.`
+        break
+      case 404:
+        entryErrorData.description = `Oops! Looks like you tried to visit a page that does not exist.`
+        break
+      default:
+        throw new Error(error.data || error.statusText)
+    }
+
+    return (
+      <Document title={`${error.status} ${error.statusText}`}>
+        <Layout>
+          <Entry data={entryErrorData} />
+        </Layout>
+      </Document>
+    )
+  }
+
+  if (error instanceof Error) {
+    const entryErrorData = {
+      ...entryData,
+      title: 'Error!',
+      description:
+        'There was an uncaught exception in your application. Check the browser or server console to inspect the error.',
+      html: buildErrorHtml(getErrorMessage(error)),
+    }
+
+    return (
+      <Document title={entryErrorData.title}>
+        <Layout>
+          <Entry data={entryErrorData} />
+        </Layout>
+      </Document>
+    )
   }
 
   return (
-    <Document title={`${caught.status} ${caught.statusText}`}>
+    <Document title={entryData.title}>
       <Layout>
-        <Entry
-          data={
-            {
-              title: caught.status.toString(),
-              subtitle: caught.statusText,
-              description: message,
-              image:
-                'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
-              imageAlt: 'Little Carly coding.',
-              html:
-                caught?.data &&
-                `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${caught.data}</span></pre>`,
-            } as EntryProps
-          }
-        />
-      </Layout>
-    </Document>
-  )
-}
-
-export function ErrorBoundry({ error }: { error: ErrorBoundaryComponent }) {
-  console.error('Check your server terminal output.')
-
-  return (
-    <Document title="Error!">
-      <Layout>
-        <Entry
-          data={
-            {
-              title: 'Error!',
-              description: `There was an uncaught exception in your application. Check the browser or server console to inspect the error.`,
-              image:
-                'https://res.cloudinary.com/lukemcdonald/image/upload/v1642448418/lukemcdonald-com/not-found_y5jbrf.jpg',
-              imageAlt: 'Little Carly coding.',
-              html: `<pre class="text-base leading-7 whitespace-normal"><span class="px-1 py-px font-sans text-sm font-medium uppercase rounded-sm text-primary-900 bg-primary-500">Error</span> <span class="block mt-2">${getErrorMessage(
-                error
-              )}</span></pre>`,
-            } as EntryProps
-          }
-        />
+        <Entry data={entryData} />
       </Layout>
     </Document>
   )
