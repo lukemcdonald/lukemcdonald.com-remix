@@ -14,7 +14,7 @@ interface LoaderData {
 }
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data, matches }) => {
-  const parentsData = matches.flatMap((match) => match.data)
+  const parentsData = matches.flatMap((match: Record<string, any>) => match.data)
   const parentRequest = parentsData.find((data) => data.requestInfo) satisfies RequestInfo
 
   const meta = [
