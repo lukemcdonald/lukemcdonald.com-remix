@@ -38,5 +38,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function Index() {
   const { page } = useLoaderData<LoaderData>()
+
   return <Entry data={page} />
 }
