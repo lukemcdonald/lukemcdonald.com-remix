@@ -1,9 +1,9 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import clsx from 'clsx'
 import { SwatchIcon } from '@heroicons/react/24/outline'
+
+import type { ThemeColor } from '~/hooks/use-theme'
 import { getThemeColor, THEMES, useTheme } from '~/hooks/use-theme'
-import type { ThemeOption } from '~/types'
 
 export function ThemeSelect() {
   const [open, setOpen] = useState(false)
@@ -13,18 +13,14 @@ export function ThemeSelect() {
     setOpen(!open)
   }
 
-  function handleThemeChange(value: ThemeOption) {
+  function handleThemeChange(value: ThemeColor) {
     setTheme(value)
   }
 
   return (
     <Listbox value={data.theme} onChange={handleThemeChange}>
-      <div className="theme-select relative">
-        <Listbox.Button
-          className="py-2 px-2 transition"
-          data-theme={data.theme.label.toLocaleLowerCase()}
-          onClick={handleButtonToggle}
-        >
+      <div className="theme-select relative" data-theme={data.theme.label.toLocaleLowerCase()}>
+        <Listbox.Button className="py-2 px-2 transition" onClick={handleButtonToggle}>
           <SwatchIcon className="h-6 w-6 text-primary-400" style={{ color: getThemeColor(data) }} />
         </Listbox.Button>
 

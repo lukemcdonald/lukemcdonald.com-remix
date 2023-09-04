@@ -1,15 +1,15 @@
 import clsx from 'clsx'
 
-import type { ThemeData } from '~/types'
 import { Header } from './header'
 import { Image } from './image'
 import { Main } from './main'
 import { ModeSelect } from './mode-select'
 import { ThemeSelect } from './theme-select'
+import type { ThemeData } from '~/hooks/use-theme'
 import { useTheme } from '~/hooks/use-theme'
 
 function getOverlayColor({ mode, theme }: ThemeData) {
-  if (mode !== 'dark') {
+  if (mode.value !== 'dark') {
     return 'bg-primary-50'
   }
 
@@ -31,7 +31,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       <Image
         className={clsx(
           'absolute left-1/2 top-1/2 hidden h-full max-h-screen w-full -translate-x-1/2 -translate-y-1/2 transform overflow-hidden object-cover blur-sm grayscale lg:block',
-          data.mode === 'dark' ? 'opacity-30 mix-blend-hard-light' : 'opacity-20'
+          data.mode.value === 'dark' ? 'opacity-30 mix-blend-hard-light' : 'opacity-20'
         )}
         src="https://res.cloudinary.com/lukemcdonald/image/upload/v1642448417/lukemcdonald-com/landscape-tree-fog_jz6tjg.jpg"
         alt="Tree fog background"

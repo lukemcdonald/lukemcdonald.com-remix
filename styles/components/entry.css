@@ -6,8 +6,11 @@
   }
 
   .entry__header {
-    text-shadow: -3px -3px 10px var(--color-primary-500), 3px -3px 15px var(--color-primary-500),
-      -3px 3px 10px var(--color-primary-500), 3px 3px 15px var(--color-primary-500);
+    text-shadow:
+      -3px -3px 10px var(--color-primary-500),
+      3px -3px 15px var(--color-primary-500),
+      -3px 3px 10px var(--color-primary-500),
+      3px 3px 15px var(--color-primary-500);
   }
 
   .entry__body {
