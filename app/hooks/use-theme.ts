@@ -20,7 +20,7 @@ export interface ThemeColor {
     dark: string
     light: string
   }
-  label: typeof themeColors[keyof typeof themeColors]
+  label: (typeof themeColors)[keyof typeof themeColors]
 }
 
 export interface ThemeData {
