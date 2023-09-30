@@ -1,6 +1,7 @@
-const colors = require('tailwindcss/colors')
+import typography from '@tailwindcss/typography'
+import colors from 'tailwindcss/colors'
 
-module.exports = {
+export default {
   content: ['./content/**/*.md', './app/**/*.{ts,tsx}'],
   theme: {
     extend: {
@@ -66,5 +67,5 @@ module.exports = {
       visibility: ['responsive', 'group-hover'],
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [typography],
 }

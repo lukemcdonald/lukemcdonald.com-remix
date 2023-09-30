@@ -1,13 +1,17 @@
 import parseFrontMatter from 'front-matter'
 import fs from 'fs/promises'
 import { marked } from 'marked'
-import path from 'path'
+import path, { dirname } from 'path'
 import invariant from 'tiny-invariant'
+import { fileURLToPath } from 'url'
 
 import type { Content } from '~/types'
 import { pageNotFound } from '~/utils/misc'
 
 type ContentMarkdownAttributes = Omit<Content, 'html' | 'markdown'>
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const contentPath = path.join(__dirname, '..', 'content')
 
