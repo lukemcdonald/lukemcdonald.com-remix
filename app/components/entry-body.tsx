@@ -21,9 +21,8 @@ export function EntryBody({ html = '', image, imageAlt = 'Content image' }: Entr
         <div
           className={clsx(
             'entry__content',
-            'relative flex flex-col justify-center bg-primary-900 px-5 py-10 text-lg leading-normal text-white xs:px-10'
+            'relative flex flex-col justify-center bg-primary-900 px-5 py-10 text-lg leading-normal text-white xs:px-10 break-words'
           )}
-          style={{ wordBreak: 'break-word' }}
           dangerouslySetInnerHTML={{ __html: html }}
         />
       )}
