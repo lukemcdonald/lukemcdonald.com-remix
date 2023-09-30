@@ -15,7 +15,7 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "predeploy": "npm run build",
     "prepare": "husky install",
-    "start": "remix-serve build"
+    "start": "remix-serve build/index.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -62,7 +62,8 @@
     "/public/build"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
+  "type": "module",
   "sideEffects": false
 }
