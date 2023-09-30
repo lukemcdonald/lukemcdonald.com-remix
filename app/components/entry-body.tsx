@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
-import type { EntryProps } from '~/types'
 import { Image } from '~/components/image'
+import type { EntryProps } from '~/types'
 
 export function EntryBody({ html = '', image, imageAlt = 'Content image' }: EntryProps) {
   return (
@@ -21,9 +21,8 @@ export function EntryBody({ html = '', image, imageAlt = 'Content image' }: Entr
         <div
           className={clsx(
             'entry__content',
-            'relative flex flex-col justify-center bg-primary-900 px-5 py-10 text-lg leading-normal text-white xs:px-10'
+            'relative flex flex-col justify-center bg-primary-900 px-5 py-10 text-lg leading-normal text-white break-words z-10 xs:px-10'
           )}
-          style={{ wordBreak: 'break-word' }}
           dangerouslySetInnerHTML={{ __html: html }}
         />
       )}

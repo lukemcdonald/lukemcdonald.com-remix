@@ -1,10 +1,9 @@
-import React from 'react'
-import clsx from 'clsx'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import clsx from 'clsx'
 
-import type { NavMenuProps } from '~/types'
 import { Link } from '~/components/link'
+import type { NavMenuProps } from '~/types'
 
 const NavMenu = ({ as = 'div', children, className, link }: NavMenuProps) => (
   <Menu as={as} className={clsx('relative inline-block text-left', className)}>

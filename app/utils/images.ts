@@ -1,6 +1,6 @@
-import invariant from 'tiny-invariant'
 import type { TransformerOption } from '@cld-apis/types'
-import { setConfig, buildImageUrl, extractPublicId } from 'cloudinary-build-url'
+import { buildImageUrl, extractPublicId, setConfig } from 'cloudinary-build-url'
+import invariant from 'tiny-invariant'
 
 setConfig({
   cloudName: 'lukemcdonald',
@@ -67,5 +67,5 @@ function getImgProps(
   }
 }
 
-export { getImgProps, getImageBuilder }
+export { getImageBuilder, getImgProps }
 export type { ImageBuilder }
