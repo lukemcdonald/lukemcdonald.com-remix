@@ -1,4 +1,4 @@
-import type { LoaderFunction, V2_MetaFunction } from '@remix-run/node'
+import type { LoaderFunction, MetaFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
@@ -12,7 +12,7 @@ interface LoaderData {
   page: Content
 }
 
-export const meta: V2_MetaFunction<typeof loader> = ({ matches }) => {
+export const meta: MetaFunction<typeof loader> = ({ matches }) => {
   const parentsData = matches.flatMap((match: Record<string, any>) => match.data)
   const parentRequest = parentsData.find((data) => data.requestInfo) satisfies RequestInfo
 
