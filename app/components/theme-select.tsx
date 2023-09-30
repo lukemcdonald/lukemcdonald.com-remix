@@ -1,6 +1,6 @@
-import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { SwatchIcon } from '@heroicons/react/24/outline'
+import { Fragment, useState } from 'react'
 
 import type { ThemeColor } from '~/hooks/use-theme'
 import { getThemeColor, THEMES, useTheme } from '~/hooks/use-theme'

@@ -1,12 +1,12 @@
 import clsx from 'clsx'
 
+import type { ThemeData } from '~/hooks/use-theme'
+import { useTheme } from '~/hooks/use-theme'
 import { Header } from './header'
 import { Image } from './image'
 import { Main } from './main'
 import { ModeSelect } from './mode-select'
 import { ThemeSelect } from './theme-select'
-import type { ThemeData } from '~/hooks/use-theme'
-import { useTheme } from '~/hooks/use-theme'
 
 function getOverlayColor({ mode, theme }: ThemeData) {
   if (mode.value !== 'dark') {

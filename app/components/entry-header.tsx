@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
-import type { EntryHeaderProps } from '~/types'
 import { Mountains } from '~/components/mountains'
+import type { EntryHeaderProps } from '~/types'
 
 export function EntryHeader({ description, subtitle, title }: EntryHeaderProps) {
   return (

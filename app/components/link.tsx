@@ -1,6 +1,6 @@
-import clsx from 'clsx'
-import { NavLink } from '@remix-run/react'
 import { ArrowTopRightOnSquareIcon as ExternalLinkIcon } from '@heroicons/react/20/solid'
+import { NavLink } from '@remix-run/react'
+import clsx from 'clsx'
 
 import type { NavLinkProps } from '~/types'
 

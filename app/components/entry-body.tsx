@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
-import type { EntryProps } from '~/types'
 import { Image } from '~/components/image'
+import type { EntryProps } from '~/types'
 
 export function EntryBody({ html = '', image, imageAlt = 'Content image' }: EntryProps) {
   return (
