@@ -11,10 +11,10 @@ function cleanMeta(meta: Array<Metadata>): Array<Metadata> {
 
 export function deriveMetaFromMetadata(metadata: Metadata): Array<Metadata> {
   return cleanMeta([
+    { name: 'author', content: metadata.author },
     { name: 'description', content: metadata.description },
-    { property: 'author', content: metadata.author },
-    { property: 'image', content: metadata.image },
-    { property: 'keywords', content: metadata.tags?.join(', ') },
+    { name: 'image', content: metadata.image },
+    { name: 'keywords', content: metadata.tags?.join(', ') },
     { title: metadata.title },
   ])
 }

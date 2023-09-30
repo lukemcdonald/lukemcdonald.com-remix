@@ -1,4 +1,4 @@
-import type { LinksFunction, LoaderFunction, V2_MetaFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node'
 import { json, redirect } from '@remix-run/node'
 import {
   Links,
@@ -19,7 +19,7 @@ import { getErrorMessage, getRequestInfo } from '~/utils/misc'
 
 import styles from '~/styles/tailwind.css'
 
-export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const requestInfo = (data as RequestInfo | undefined)?.requestInfo
 
   const meta = [
