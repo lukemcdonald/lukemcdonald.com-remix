@@ -13,6 +13,7 @@ const menuLinks: MenuLink[] = [
       { name: 'AudioTheme', to: '/work/audiotheme' },
       { name: 'Blazer Six', to: '/work/blazer-six' },
       { name: 'Cedaro', to: '/work/cedaro' },
+      { name: 'Resume', to: '/resume' },
     ],
   },
   {
